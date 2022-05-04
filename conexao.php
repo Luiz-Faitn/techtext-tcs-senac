@@ -1,11 +1,8 @@
 <?php
+    error_reporting(E_ALL ^E_NOTICE);
 
-$hostname = "localhost";
-$usuario  = "root";
-$senha    = "9548";
-$banco    = "mydb";
-
-$conexao = new mysqli($hostname, $usuario, $senha, $banco);
-if ($conexao->connect_errno) {
-    echo "Falha ao conectar: (" . $conexao->connect_errno . ") " . $conexao->connect_error;
-}
+    $conexao = mysqli_connect("localhost", "root", "mysql", "mydb");
+    
+    if ($conexao == false) {
+        die("Erro na conexão: " . mysqli_connect_error());
+    }

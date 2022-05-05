@@ -17,6 +17,8 @@
 
     <h2>Lista Produto</h2>
 
+    <a href="formProduto.php">Cadastrar Produto</a><br /><br />
+
     <table border="1">
         <tr>
             <td>Código</td>
@@ -60,8 +62,8 @@
             echo "<td>$item[tamanhoComprimentoPernaLateral]</td>";
             echo "<td>$item[tamanhoComprimentoFrentePerna]</td>";
             echo "<td>$item[tamanhoLaguraPerna]</td>";
-            echo "<td> <a href='formProduto.php?codigo=$item[idProduto]'><img src='editar.jpg' /></a> </td>";
-            echo "<td> <a href='excluirProduto.php?codigo=$item[idProduto]'><img src='excluir.jpg' /></a> </td>";
+            echo "<td> <a href='formProduto.php?cod=$item[idProduto]'><img src='edit.png' width='20' />";
+            echo "<td> <a href='excluirProduto.php?cod=$item[idProduto]'><img src='deletar.png' width='20' />";
             echo "</tr>";
         }
     ?>

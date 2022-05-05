@@ -3,7 +3,7 @@
     if ($_GET) {
         $sql = "SELECT idProduto, modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa,
         quantidadeBotao, quantidadeRibite, quantidadePlaca, tamanho, tamanhoCintura, tamanhoQuadril, tamanhoGanchoTraseiro,
-        tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna, tamanhoLaguraPerna from produto WHERE idProduto = $_GET[codigo]";
+        tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna, tamanhoLaguraPerna from produto WHERE idProduto = $_GET[cod]";
         $resultado = mysqli_query($conexao, $sql);
         $produto = mysqli_fetch_array($resultado);
         if (!$resultado) {
@@ -20,13 +20,13 @@
 <body>
 
     <h2>Cadastrar de Produto </h2>
-    <a href="listarProduto.php">Lista de Produto</a><br>
+    <a href="listarProduto.php">Lista de Produto</a><br /><br />
     <form method="post" action="gravarProduto.php">
 
     <?php
         if ($_GET) {
             echo "Código: <br>";
-            echo "<input type='text' name='cod' readonly='readonly' value='$_GET[codigo]'/> <br>";
+            echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]'/> <br>";
         }
     ?>
     Modelo: <br>

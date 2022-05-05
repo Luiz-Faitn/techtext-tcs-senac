@@ -2,7 +2,7 @@
 
 include "conexao.php"; 
 
-$sql = "DELETE FROM cliente WHERE idcliente = $_GET[codigo]";
+$sql = "DELETE FROM cliente WHERE idcliente = $_GET[cod]";
 
 $resultado = mysqli_query($conexao, $sql);
 

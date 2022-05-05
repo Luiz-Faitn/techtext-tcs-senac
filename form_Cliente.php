@@ -3,11 +3,11 @@
     include "conexao.php";
 
     if($_GET) {
-        $sql = "SELECT razao_social, nome_fantasia, marca FROM cliente WHERE idcliente = $_GET[codigo]";
+        $sql = "SELECT razao_social, nome_fantasia, marca FROM cliente WHERE idCliente = $_GET[cod]";
 
         $resultado = mysqli_query($conexao, $sql);
 
-        $cliente = mysqli_fetch_array($resultado);
+        $cliente = mysqli_fetch_array($resultado); 
 
         if (!$resultado) {
             echo "Erro: " . mysqli_error($conexao);
@@ -27,20 +27,23 @@
 <?php
     if ($_GET) {
         echo "Código:<br />";
-        echo "<input type='text' name='cod' readonly='readonly' value='$_GET[codigo]' /><br /><br />";
+        echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' /><br /><br />";
     }
 ?>
+        Razão Social:<br />
+        <input type="text" name="razao_social" value="<?php if ($cliente['razao_social']) {
+            echo $cliente['razao_social'];
+        } else {
+            echo "";
+        }  ?>" /><br /><br />
 
-    Razão Social:<br />
-    <input type="text" name="razao_social" value="<?php echo $cliente['razao_social'] ?>" /><br /><br />
+        Nome Fantasia:<br />
+        <input type="text" name="nome_fantasia" value="<?php echo $cliente['nome_fantasia'] ?>" /><br /><br />
 
-    Nome Fantasia:<br />
-    <input type="text" name="nome_fantasia" value="<?php echo $cliente['nome_fantasia'] ?>" /><br /><br />
+            Marca:<br />
+        <input type="text" name="marca" value="<?php echo $cliente['marca'] ?>" /><br /><br />
 
-    Marca:<br />
-    <input type="text" name="marca" value="<?php echo $cliente['marca'] ?>" /><br /><br />
-
-    <input type="submit" value="<?php echo $op ?>" />
+        <input type="submit" value="<?php echo $op ?>" />
 
     </form>   
 </body>

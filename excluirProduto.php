@@ -1,7 +1,7 @@
 <?php
     include 'conexao.php';
 
-    $sql = "DELETE FROM produto WHERE idProduto = $_GET[codigo]";
+    $sql = "DELETE FROM produto WHERE idProduto = $_GET[cod]";
 
     $resultado = mysqli_query($conexao, $sql);
 

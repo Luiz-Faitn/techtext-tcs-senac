@@ -168,3 +168,18 @@ main {
     background-color: #ff0000;
 }
 
+.lista {
+    display: flex;
+    flex-direction: column;
+    margin-left: 295px;
+    height: 50vh;
+}
+
+.lista__h1 {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    margin: 2% 0px 5%;
+
+}
+

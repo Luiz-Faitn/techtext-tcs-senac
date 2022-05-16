@@ -100,7 +100,6 @@ main {
     align-self: center;
     justify-self: center;
     margin: 2% 0px 5%;
-
 }
 
 .cadastro__form {
@@ -114,7 +113,6 @@ main {
 
 .cadastro__form_item {
     display: flex;
-
 }
 
 .cadastro__form_item > input {
@@ -132,12 +130,12 @@ main {
 
 .cadastro__form_item-large {
     width: 50%;
-
 }
 
 .cadastro__form_item_label {
     min-width: 125px;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .cadastro__form_button_container {
@@ -180,6 +178,49 @@ main {
     align-self: center;
     justify-self: center;
     margin: 2% 0px 5%;
-
 }
+
+.filtro {
+    display: inline-block;
+}
+
+.lista__buscar {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.lista__buscar-large {
+    width: 75%;
+}
+
+.lista__buscar > input {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.lista__buscar >input:focus {
+    border: 2px solid black;
+    border-color: #1890ff;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table td, table th {
+    font-size: 14px;
+    padding: 10px 15px;
+    border: solid 1px #ccc;
+}
+
+
+
+
 

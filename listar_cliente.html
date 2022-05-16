@@ -66,9 +66,33 @@
               </div>
             </div>
           </div>
-
-          <div class="lista">
-            <h1 class="lista__h1">Lista de Clientes</h1>
+          <head>
+            <body>
+              <div class="lista">
+                <h1 class="lista__h1">Lista de Clientes</h1>
+                <div class="filtro">
+                  <i class="fa-solid fa-filter fa-3x"></i>
+                </div>
+                <div class="lista__buscar lista__buscar-large">
+                  <label class="lista__buscar_label"></label>
+                  <input name="lista_buscar" placeholder="Buscar..." />
+                </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Razão Social</th>
+                      <th>Nome</th>
+                      <th>Marca</th>
+                      <th>Editar</th>
+                      <th>Excluir</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </body>
+          </head>
 
           <script type="text/javascript">
             $(document).ready(function () {

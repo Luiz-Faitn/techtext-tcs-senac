@@ -15,6 +15,7 @@ if($_POST['submit_cliente']) {
 $resultado = mysqli_query($conexao, $sql);
 
 if ($resultado) {  
+    header('location:../novo_cliente.html');
 } else {
     echo "Erro: " . mysqli_error($conexao); 
 }

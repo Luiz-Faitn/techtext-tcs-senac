@@ -21,7 +21,7 @@ if (isset($_GET)) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adicionar Cliente</title>
+  <title>Editar Cliente</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -67,37 +67,37 @@ if (isset($_GET)) {
           </div>
         </div>
 
-        <div class="cadastro">
-          <h1 class="cadastro__h1">Edição de Clientes</h1>
-          <form method="post" action="backend/gravar_Cliente.php" class="cadastro__form">
-            <div class="cadastro__form_item cadastro__form_item-large">
+        <div class="editar">
+          <h1 class="editar__h1">Edição de Clientes</h1>
+          <form method="post" action="backend/gravar_Cliente.php" class="editar__form">
+            <div class="editar__form_item editar__form_item-large">
               <?php
                 if ($_GET) {
-                echo "<label class='cadastro__form_item_label'>Código</label>";
+                echo "<label class='editar__form_item_label'>Código</label>";
                 echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
                 }
               ?>
             </div>
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Razão Social</label>
+            <div class="editar__form_item editar__form_item-large">
+              <label class="editar__form_item_label">Razão Social</label>
               <input type="text" name="razao_social" placeholder="Razão Social" id="razao_social" required
                 maxlength="150" value="<?php echo $cliente['razao_social'] ?>" />
             </div>
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Nome</label>
+            <div class="editar__form_item editar__form_item-large">
+              <label class="editar__form_item_label">Nome</label>
               <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100"
                 value="<?php echo $cliente['nome_fantasia'] ?>" />
             </div>
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Marca</label>
+            <div class="editar__form_item editar__form_item-large">
+              <label class="editar__form_item_label">Marca</label>
               <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100"
                 value="<?php echo $cliente['marca'] ?>" />
             </div>
-            <div class="cadastro__form_button_container">
-              <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
+            <div class="editar__form_button_container">
+              <button type="submit" name="submit_cliente" class="editar__form_button editar__form_button-submit">
                 Editar
               </button>
-              <button type="reset" class="cadastro__form_button cadastro__form_button-reset">
+              <button type="reset" class="editar__form_button editar__form_button-reset">
                 Cancelar
               </button>
             </div>

@@ -94,7 +94,21 @@ main {
   height: 50vh;
 }
 
+.editar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 50vh;
+}
+
 .cadastro__h1 {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: 2% 0px 5%;
+}
+
+.editar__h1 {
   display: flex;
   align-self: center;
   justify-self: center;
@@ -110,11 +124,33 @@ main {
   padding-left: 2%;
 }
 
+.editar__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding-left: 2%;
+}
+
 .cadastro__form_item {
   display: flex;
 }
 
+.editar__form_item {
+  display: flex;
+}
+
 .cadastro__form_item > input {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.editar__form_item > input {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -128,7 +164,16 @@ main {
   border-color: #1890ff;
 }
 
+.editar__form_item > input:focus {
+  border: 2px solid black;
+  border-color: #1890ff;
+}
+
 .cadastro__form_item > input:invalid {
+  border-color: red;
+}
+
+.editar__form_item > input:invalid {
   border-color: red;
 }
 
@@ -136,7 +181,15 @@ main {
   border-color: green;
 }
 
+.editar__form_item > input:valid {
+  border-color: green;
+}
+
 .cadastro__form_item-large {
+  width: 97%;
+}
+
+.editar__form_item-large {
   width: 97%;
 }
 
@@ -146,7 +199,20 @@ main {
   font-weight: bold;
 }
 
+.editar__form_item_label {
+  min-width: 125px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .cadastro__form_button_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editar__form_button_container {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -165,11 +231,32 @@ main {
   margin-top: 2%;
 }
 
+.editar__form_button {
+  width: 10%;
+  height: 30px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2%;
+}
+
 .cadastro__form_button-submit {
   background-color: #00b050;
 }
 
+.editar__form_button-submit {
+  background-color: #00b050;
+}
+
 .cadastro__form_button-reset {
+  margin-left: 25px;
+  background-color: #ff0000;
+}
+
+.editar__form_button-reset {
   margin-left: 25px;
   background-color: #ff0000;
 }
@@ -188,7 +275,7 @@ main {
   margin: 2% 0px 5%;
 }
 
-*.filtro {
+.filtro {
   display: flex;
 }
 

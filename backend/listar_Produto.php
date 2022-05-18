@@ -13,33 +13,34 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
 <html lang="pt-br">
+
 <body>
 
-    <h2>Lista Produto</h2>
+  <h2>Lista Produto</h2>
 
-    <a href="formProduto.php">Cadastrar Produto</a><br /><br />
+  <a href="formProduto.php">Cadastrar Produto</a><br /><br />
 
-    <table border="1">
-        <tr>
-            <td>Código</td>
-            <td>Modelo</td>
-            <td>tipo de Tecido</td>
-            <td>Tipo de Forro</td>
-            <td>Observacao</td>
-            <td>Descrição do Botao</td>
-            <td>Descricao do Ribite</td>
-            <td>Descricao da Placa</td>
-            <td>Quantidade de Botao</td>
-            <td>Quantidade de Ribite</td>
-            <td>quantida de Placa</td>
-            <td>Tamanho</td>
-            <td>Tamanho da Cintura</td>
-            <td>Tamanho do Quadril</td>
-            <td>Tamanho Gancho Traseiro</td>
-            <td>Tamanho Comprimento Perna Lateral</td>
-            <td>Tamanho Comprimento Frente Perna</td>
-            <td>Tamanho Largura Perna</td>
-        </tr>
+  <table border="1">
+    <tr>
+      <td>Código</td>
+      <td>Modelo</td>
+      <td>tipo de Tecido</td>
+      <td>Tipo de Forro</td>
+      <td>Observacao</td>
+      <td>Descrição do Botao</td>
+      <td>Descricao do Ribite</td>
+      <td>Descricao da Placa</td>
+      <td>Quantidade de Botao</td>
+      <td>Quantidade de Ribite</td>
+      <td>quantida de Placa</td>
+      <td>Tamanho</td>
+      <td>Tamanho da Cintura</td>
+      <td>Tamanho do Quadril</td>
+      <td>Tamanho Gancho Traseiro</td>
+      <td>Tamanho Comprimento Perna Lateral</td>
+      <td>Tamanho Comprimento Frente Perna</td>
+      <td>Tamanho Largura Perna</td>
+    </tr>
 
     <?php
         while($item = mysqli_fetch_array($resultado)) {
@@ -67,6 +68,7 @@
             echo "</tr>";
         }
     ?>
-</table>
+  </table>
 </body>
+
 </html>

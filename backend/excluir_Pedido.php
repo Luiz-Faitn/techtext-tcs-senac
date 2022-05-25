@@ -1,13 +1,13 @@
 <?php
 
 include 'conexao.php';
-
-$sql = "DELETE FROM produto WHERE idProduto = $_GET[cod]";
+    
+$sql = "DELETE FROM pedido WHERE idPedido = $_GET[cod]";
 
 $resultado = mysqli_query($conexao, $sql);
 
 if ($resultado) {
-    header('location:../listar_produto.php');
+    header('location:../listar_pedido.php');
 } else {
     echo "Erro: " . mysqli_error($conexao);
 }

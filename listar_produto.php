@@ -1,12 +1,13 @@
 <?php
 include "backend/conexao.php";
 
-//Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
+//Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
     $data = $_GET['search'];
-    $sql = "SELECT * FROM cliente WHERE idCliente LIKE '%$data%' or razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%' ORDER BY idCliente DESC";
+    $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
+    or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%' ORDER BY idProduto DESC";
 } else {
-    $sql = 'SELECT * FROM cliente ORDER BY idCliente DESC';
+    $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -23,7 +24,7 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Clientes</title>
+  <title>Lista de Produtos</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -74,7 +75,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Clientes</h1>
+            <h1 class="lista__h1">Lista de Produtos</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -91,9 +92,22 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Razão Social</th>
-                  <th>Nome</th>
-                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>tipo de Tecido</th>
+                  <th>Tipo de Forro</th>
+                  <th>Observação</th>
+                  <th>Descrição do Botão</th>
+                  <th>Descrição do Ribite</th>
+                  <th>Descrição da Placa</th>
+                  <th>Quantidade de Botão</th>
+                  <th>Quantidade de Ribite</th>
+                  <th>Quantidade de Placa</th>
+                  <th>Tamanho</th>
+                  <th>Tamanho da Cintura</th>
+                  <th>Tamanho do Quadril</th>
+                  <th>Comprimento do Gancho Traseiro</th>
+                  <th>Tamanho Comprimento da Perna Lateral</th>
+                  <th>Tamanho Comprimento da Frente da Perna</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
@@ -102,21 +116,34 @@ if (!$resultado) {
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
                 //PHP para mostrar os clientes listados.
                 echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idCliente]</td>";
-                echo "<td>$linha[razao_social]</td>";
-                echo "<td>$linha[nome_fantasia]</td>";
-                echo "<td>$linha[marca]</td>";
+                echo "<td>$linha[idProduto]</td>";
+                echo "<td>$linha[tipoTecido]</td>";
+                echo "<td>$linha[tipoForro]</td>";
+                echo "<td>$linha[obesrvacao]</td>";
+                echo "<td>$linha[descricaoBotao]</td>";
+                echo "<td>$linha[descricaoRibite]</td>";
+                echo "<td>$linha[placa]</td>";
+                echo "<td>$linha[quantidadeBotao]</td>";
+                echo "<td>$linha[quantidadeRibite]</td>";
+                echo "<td>$linha[quantidadePlaca]</td>";
+                echo "<td>$linha[tamanho]</td>";
+                echo "<td>$linha[tamanhoCintura]</td>";
+                echo "<td>$linha[tamanhoQuadril]</td>";
+                echo "<td>$linha[tamanhoGanchoTraseiro]</td>";
+                echo "<td>$linha[tamanhoComprimentoPernaLateral]</td>";
+                echo "<td>$linha[tamanhoComprimentoFrentePerna]</td>";
+                echo "<td>$linha[tamanhoLaguraPerna]</td>";
 
                 echo '<td>';
 
-                echo "<a href='editar_cliente.php?cod=$linha[idCliente]'>";
+                echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
 
                 echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                 echo '</a>';
 
                 echo '<td>';
 
-                echo "<a href='backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
+                echo "<a href='backend/excluir_Produto.php?cod=$linha[idProduto]'>";
                 echo "<i class='fa-solid fa-trash fa-2x'></i>";
                 echo '</a>';
 

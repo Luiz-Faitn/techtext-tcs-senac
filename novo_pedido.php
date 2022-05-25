@@ -1,3 +1,14 @@
+<?php
+  
+//Conexão com o banco para aparecer o idCliente no cadastro. 
+include "backend/conexao.php";
+
+$sqlCliente = "SELECT idCliente, nome_fantasia FROM cliente ORDER BY nome_fantasia";
+
+$resultadoCliente = mysqli_query($conexao, $sqlCliente);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,7 +16,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adicionar Cliente</title>
+  <title>Adicionar Pedido</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -55,25 +66,38 @@
         </div>
 
         <div class="cadastro">
-          <h1 class="cadastro__h1">Cadastro de Clientes</h1>
+          <h1 class="cadastro__h1">Cadastro de Pedidos</h1>
 
-          <!-- Cadastro de Cliente -->
-          <form method="post" action="backend/gravar_Cliente.php" class="cadastro__form">
+          <!-- Cadastro de Pedidos -->
+          <form method="post" action="backend/gravar_Pedido.php" class="cadastro__form">
 
             <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Razão Social</label>
-              <input type="text" name="razao_social" placeholder="Razão Social" id="razao_social" required
-                maxlength="150" />
+              <label class="cadastro__form_item_label">Data do Cadastro</label>
+              <input type="date" name="data_Cadastro" id="data_Cadastro" required />
             </div>
 
             <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Nome</label>
-              <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100" />
+              <label class="cadastro__form_item_label">Cliente</label>
+              <select name="cliente">
+                <option>Selecione</option>
+                <?php
+                while($cliente = mysqli_fetch_array($resultadoCliente)){
+                    
+                      if($cliente['idCliente'] == $pedido['idCliente']){
+                         echo "<option value='$cliente[idCliente]' selected='selected'>";
+                      }else{
+                         echo "<option value='$cliente[idCliente]'>";
+                      }
+                      
+                      echo $cliente['nome_fantasia'];
+                      echo "</option>";
+                }
+            ?>
             </div>
 
             <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Marca</label>
-              <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100" />
+              <label class="cadastro__form_item_label">Data de Entrega</label>
+              <input type="date" name="dataEntrega" id="dataEntrega" required />
             </div>
 
             <div class="cadastro__form_button_container">

@@ -94,6 +94,13 @@ main {
   height: 50vh;
 }
 
+.cadastro_produto {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 100vh;
+}
+
 .editar {
   display: flex;
   flex-direction: column;
@@ -133,7 +140,20 @@ main {
   padding-left: 2%;
 }
 
+.cadastro__form_produto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60%;
+  width: 30%;
+  padding-left: 2%;
+}
+
 .cadastro__form_item {
+  display: flex;
+}
+
+.cadastro__form_item_produto {
   display: flex;
 }
 
@@ -142,6 +162,15 @@ main {
 }
 
 .cadastro__form_item > input {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.cadastro__form_item_produto > input {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -164,12 +193,20 @@ main {
   border-color: #1890ff;
 }
 
+.cadastro__form_item_produto > input:focus {
+  border: 2px solid black;
+  border-color: #1890ff;
+}
+
 .editar__form_item > input:focus {
   border: 2px solid black;
   border-color: #1890ff;
 }
 
 .cadastro__form_item > input:invalid {
+  border-color: red;
+}
+.cadastro__form_item_produto > input:invalid {
   border-color: red;
 }
 
@@ -180,6 +217,9 @@ main {
 .cadastro__form_item > input:valid {
   border-color: green;
 }
+.cadastro__form_item_produto > input:valid {
+  border-color: green;
+}
 
 .editar__form_item > input:valid {
   border-color: green;
@@ -187,6 +227,10 @@ main {
 
 .cadastro__form_item-large {
   width: 97%;
+}
+
+.cadastro__form_item_produto-large {
+  width: 100%;
 }
 
 .editar__form_item-large {
@@ -265,7 +309,6 @@ main {
   display: flex;
   flex-direction: column;
   margin-left: 295px;
-  height: 50vh;
 }
 
 .lista__h1 {

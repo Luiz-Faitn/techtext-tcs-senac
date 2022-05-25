@@ -16,7 +16,7 @@
     $tamanhoQuadril =                 $_POST['tamanhoQuadril'];
     $tamanhoGanchoTraseiro =          $_POST['tamanhoGanchoTraseiro'];
     $tamanhoComprimentoPernaLateral = $_POST['tamanhoComprimentoPernaLateral'];
-    $tamanhoComprimentoFrentePerna =  $_POST['tamanhoComprimentoPernaLateral'];
+    $tamanhoComprimentoFrentePerna =  $_POST['tamanhoComprimentoFrentePerna'];
     $tamanhoLaguraPerna =             $_POST['tamanhoLaguraPerna'];
 
     if ($_POST['cod']) {
@@ -27,7 +27,7 @@
     } else {
          $sql = "INSERT INTO produto (modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa,
          quantidadeBotao, quantidadeRibite, quantidadePlaca, tamanho, tamanhoCintura, tamanhoQuadril, tamanhoGanchoTraseiro,
-         tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna, tamanhoLaguraPerna) VALUE ('$modelo', '$tipoTecido', '$tipoForro',
+         tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna, tamanhoLaguraPerna) VALUES ('$modelo', '$tipoTecido', '$tipoForro',
          '$obesrvacao', '$descricaoBotao', '$descricaoRibite', '$placa', $quantidadeBotao, $quantidadeRibite, 
          $quantidadePlaca, $tamanho, $tamanhoCintura, $tamanhoQuadril, $tamanhoGanchoTraseiro, $tamanhoComprimentoPernaLateral, 
          $tamanhoComprimentoFrentePerna, $tamanhoLaguraPerna)";
@@ -36,7 +36,7 @@
    $resultado = mysqli_query($conexao, $sql);
 
     if ($resultado) {
-        header("location: listarProduto.php");
+        header('location:../listar_produto.php');
     } else {
         die("Erro: " . mysqli_error($conexao));
     }

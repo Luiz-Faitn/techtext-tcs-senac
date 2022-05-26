@@ -1,18 +1,27 @@
 <?php
-include "backend/conexao.php";
+  
+//Conexão com o banco para aparecer o idCliente no cadastro. 
+include "../backend/conexao.php";
+
+$sqlCliente = "SELECT idCliente, nome_fantasia FROM cliente ORDER BY nome_fantasia";
+
+$resultadoCliente = mysqli_query($conexao, $sqlCliente);
 
 //Conexão com o banco para pegar o cliente que será editado.
 if (isset($_GET)) {
-    $sql = "SELECT razao_social, nome_fantasia, marca FROM cliente WHERE idCliente = $_GET[cod]";
+  $sql = "SELECT idPedido, data_Cadastro, idCliente, dataEntrega 
+          FROM pedido
+          WHERE idPedido = $_GET[cod]";
 
-    $resultado = mysqli_query($conexao, $sql);
+  $resultado = mysqli_query($conexao, $sql);
 
-    $cliente = mysqli_fetch_array($resultado);
+  $pedido = mysqli_fetch_array($resultado);
 
-  if (!$resultado) {
-      echo "Erro: " . mysqli_error($conexao);
-  }
+if (!$resultado) {
+    echo "Erro: " . mysqli_error($conexao);
 }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +31,8 @@ if (isset($_GET)) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Editar Cliente</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Editar Pedido</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -36,7 +45,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -65,16 +74,17 @@ if (isset($_GET)) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_contato.php" class="sub-item">Novo Contato</a>
-                <a href="listar_contato.php" class="sub-item">Lista de Pedidos</a>
+                <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Edição de Cliente -->
-        <div class="editar">
-          <h1 class="editar__h1">Edição de Clientes</h1>
-          <form method="post" action="backend/gravar_Cliente.php" class="editar__form">
+        <div class="cadastro">
+          <h1 class="cadastro__h1">Edição de Pedidos</h1>
+
+          <!-- Edição de Pedidos -->
+          <form method="post" action="../backend/gravar_Pedido.php" class="cadastro__form">
 
             <div class="editar__form_item editar__form_item-large">
               <?php
@@ -85,31 +95,44 @@ if (isset($_GET)) {
               ?>
             </div>
 
-            <div class="editar__form_item editar__form_item-large">
-              <label class="editar__form_item_label">Razão Social</label>
-              <input type="text" name="razao_social" placeholder="Razão Social" id="razao_social" required
-                maxlength="150" value="<?php echo $cliente['razao_social'] ?>" />
+            <div class="cadastro__form_item cadastro__form_item-large">
+              <label class="cadastro__form_item_label">Data do Cadastro</label>
+              <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>"
+                required />
             </div>
 
-            <div class="editar__form_item editar__form_item-large">
-              <label class="editar__form_item_label">Nome</label>
-              <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100"
-                value="<?php echo $cliente['nome_fantasia'] ?>" />
+            <div class="cadastro__form_item cadastro__form_item-large">
+              <label class="cadastro__form_item_label">Cliente</label>
+              <select name="cliente">
+                <option>Selecione</option>
+                <?php
+                while($cliente = mysqli_fetch_array($resultadoCliente)){
+                    
+                      if($cliente['idCliente'] == $pedido['idCliente']){
+                         echo "<option value='$cliente[idCliente]' selected='selected'>";
+                      }else{
+                         echo "<option value='$cliente[idCliente]'>";
+                      }
+                      
+                      echo $cliente['nome_fantasia'];
+                      echo "</option>";
+                }
+            ?>
             </div>
 
-            <div class="editar__form_item editar__form_item-large">
-              <label class="editar__form_item_label">Marca</label>
-              <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100"
-                value="<?php echo $cliente['marca'] ?>" />
+            <div class="cadastro__form_item cadastro__form_item-large">
+              <label class="cadastro__form_item_label">Data de Entrega</label>
+              <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>"
+                required />
             </div>
 
-            <div class="editar__form_button_container">
-              <button type="submit" name="submit_cliente" class="editar__form_button editar__form_button-submit">
-                Editar
+            <div class="cadastro__form_button_container">
+              <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
+                Cadastrar
               </button>
-              <button type="submit" class="editar__form_button editar__form_button-reset"
-                onclick="window.location='listar_cliente.php';">
-                Cancelar </button>
+              <button type="reset" class="cadastro__form_button cadastro__form_button-reset">
+                Cancelar
+              </button>
             </div>
           </form>
         </div>

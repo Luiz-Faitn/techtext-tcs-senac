@@ -1,26 +1,11 @@
 <?php
   
 //Conexão com o banco para aparecer o idCliente no cadastro. 
-include "backend/conexao.php";
+include "../backend/conexao.php";
 
 $sqlCliente = "SELECT idCliente, nome_fantasia FROM cliente ORDER BY nome_fantasia";
 
 $resultadoCliente = mysqli_query($conexao, $sqlCliente);
-
-//Conexão com o banco para pegar o cliente que será editado.
-if (isset($_GET)) {
-  $sql = "SELECT idPedido, data_Cadastro, idCliente, dataEntrega 
-          FROM pedido
-          WHERE idPedido = $_GET[cod]";
-
-  $resultado = mysqli_query($conexao, $sql);
-
-  $pedido = mysqli_fetch_array($resultado);
-
-if (!$resultado) {
-    echo "Erro: " . mysqli_error($conexao);
-}
-}
 
 ?>
 
@@ -31,8 +16,8 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Editar Pedido</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Adicionar Pedido</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -45,7 +30,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -74,31 +59,21 @@ if (!$resultado) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_contato.php" class="sub-item">Novo Contato</a>
-                <a href="listar_contato.php" class="sub-item">Lista de Pedidos</a>
+                <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
           </div>
         </div>
 
         <div class="cadastro">
-          <h1 class="cadastro__h1">Edição de Pedidos</h1>
+          <h1 class="cadastro__h1">Cadastro de Pedidos</h1>
 
-          <!-- Edição de Pedidos -->
-          <form method="post" action="backend/gravar_Pedido.php" class="cadastro__form">
-
-            <div class="editar__form_item editar__form_item-large">
-              <?php
-                if ($_GET) {
-                echo "<label class='editar__form_item_label'>Código</label>";
-                echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
-                }
-              ?>
-            </div>
+          <!-- Cadastro de Pedidos -->
+          <form method="post" action="../backend/gravar_Pedido.php" class="cadastro__form">
 
             <div class="cadastro__form_item cadastro__form_item-large">
               <label class="cadastro__form_item_label">Data do Cadastro</label>
-              <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>"
-                required />
+              <input type="date" name="data_Cadastro" id="data_Cadastro" required />
             </div>
 
             <div class="cadastro__form_item cadastro__form_item-large">
@@ -122,8 +97,7 @@ if (!$resultado) {
 
             <div class="cadastro__form_item cadastro__form_item-large">
               <label class="cadastro__form_item_label">Data de Entrega</label>
-              <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>"
-                required />
+              <input type="date" name="dataEntrega" id="dataEntrega" required />
             </div>
 
             <div class="cadastro__form_button_container">

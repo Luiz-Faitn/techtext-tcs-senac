@@ -36,7 +36,7 @@
    $resultado = mysqli_query($conexao, $sql);
 
     if ($resultado) {
-        header('location:../listar_produto.php');
+        header('location:../Frontend/listar_produto.php');
     } else {
         die("Erro: " . mysqli_error($conexao));
     }

@@ -18,7 +18,7 @@ if ($_POST['cod']) {
 $resultado = mysqli_query($conexao, $sql);
 
 if ($resultado) {
-    header('location:../listar_pedido.php');
+    header('location:../Frontend/listar_pedido.php');
 }else{
     echo "Erro: " . mysqli_error($conexao);
 }

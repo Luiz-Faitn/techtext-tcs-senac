@@ -16,7 +16,7 @@ main {
 }
 
 .background-image {
-  background: url(imgs/Background.png) no-repeat;
+  background: url(../imgs/Background.png) no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;

@@ -1,21 +1,12 @@
 <?php
-include "backend/conexao.php";
+include "../backend/conexao.php";
 
-//Conexão com o banco para listar os pedidos, juntamente com a barra de pesquisar.
+//Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
     $data = $_GET['search'];
-    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega
-            FROM pedido p
-            JOIN cliente c
-            ON c.idCliente = p.idCliente
-            WHERE p.idPedido LIKE '%$data%' or c.nome_fantasia
-            ORDER BY nome_fantasia DESC";
+    $sql = "SELECT * FROM cliente WHERE idCliente LIKE '%$data%' or razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%' ORDER BY idCliente DESC";
 } else {
-    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega 
-            FROM pedido p
-            JOIN cliente c
-            ON c.idCliente = p.idCliente
-            ORDER BY nome_fantasia";
+    $sql = 'SELECT * FROM cliente ORDER BY idCliente DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -32,8 +23,8 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Pedidos</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Lista de Clientes</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -46,7 +37,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -75,7 +66,7 @@ if (!$resultado) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_contato.php" class="sub-item">Novo Contato</a>
-                <a href="listar_contato.php" class="sub-item">Lista de Pedidos</a>
+                <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
           </div>
@@ -83,7 +74,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Pedidos</h1>
+            <h1 class="lista__h1">Lista de Clientes</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -100,32 +91,32 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Data de Cadastro</th>
-                  <th>Cliente</th>
-                  <th>Data de Entrega</th>
+                  <th>Razão Social</th>
+                  <th>Nome</th>
+                  <th>Marca</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                //PHP para mostrar os pedidos listados.
+                //PHP para mostrar os clientes listados.
                 echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idPedido]</td>";
-                echo "<td>$linha[data_Cadastro]</td>";
+                echo "<td>$linha[idCliente]</td>";
+                echo "<td>$linha[razao_social]</td>";
                 echo "<td>$linha[nome_fantasia]</td>";
-                echo "<td>$linha[dataEntrega]</td>";
+                echo "<td>$linha[marca]</td>";
 
                 echo '<td>';
 
-                echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
+                echo "<a href='editar_cliente.php?cod=$linha[idCliente]'>";
 
                 echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                 echo '</a>';
 
                 echo '<td>';
 
-                echo "<a href='backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
+                echo "<a href='../backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
                 echo "<i class='fa-solid fa-trash fa-2x'></i>";
                 echo '</a>';
 

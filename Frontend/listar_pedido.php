@@ -1,13 +1,21 @@
 <?php
-include "backend/conexao.php";
+include "../backend/conexao.php";
 
-//Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
+//Conexão com o banco para listar os pedidos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
     $data = $_GET['search'];
-    $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
-    or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%' ORDER BY idProduto DESC";
+    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega
+            FROM pedido p
+            JOIN cliente c
+            ON c.idCliente = p.idCliente
+            WHERE p.idPedido LIKE '%$data%' or c.nome_fantasia
+            ORDER BY nome_fantasia DESC";
 } else {
-    $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
+    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega 
+            FROM pedido p
+            JOIN cliente c
+            ON c.idCliente = p.idCliente
+            ORDER BY nome_fantasia";
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -24,8 +32,8 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Produtos</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Lista de Pedidos</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -38,7 +46,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -67,7 +75,7 @@ if (!$resultado) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_contato.php" class="sub-item">Novo Contato</a>
-                <a href="listar_contato.php" class="sub-item">Lista de Pedidos</a>
+                <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
           </div>
@@ -75,7 +83,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Produtos</h1>
+            <h1 class="lista__h1">Lista de Pedidos</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -92,58 +100,32 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Modelo</th>
-                  <th>tipo de Tecido</th>
-                  <th>Tipo de Forro</th>
-                  <th>Observação</th>
-                  <th>Descrição do Botão</th>
-                  <th>Descrição do Ribite</th>
-                  <th>Descrição da Placa</th>
-                  <th>Quantidade de Botão</th>
-                  <th>Quantidade de Ribite</th>
-                  <th>Quantidade de Placa</th>
-                  <th>Tamanho</th>
-                  <th>Tamanho da Cintura</th>
-                  <th>Tamanho do Quadril</th>
-                  <th>Comprimento do Gancho Traseiro</th>
-                  <th>Tamanho Comprimento da Perna Lateral</th>
-                  <th>Tamanho Comprimento da Frente da Perna</th>
+                  <th>Data de Cadastro</th>
+                  <th>Cliente</th>
+                  <th>Data de Entrega</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                //PHP para mostrar os clientes listados.
+                //PHP para mostrar os pedidos listados.
                 echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idProduto]</td>";
-                echo "<td>$linha[tipoTecido]</td>";
-                echo "<td>$linha[tipoForro]</td>";
-                echo "<td>$linha[obesrvacao]</td>";
-                echo "<td>$linha[descricaoBotao]</td>";
-                echo "<td>$linha[descricaoRibite]</td>";
-                echo "<td>$linha[placa]</td>";
-                echo "<td>$linha[quantidadeBotao]</td>";
-                echo "<td>$linha[quantidadeRibite]</td>";
-                echo "<td>$linha[quantidadePlaca]</td>";
-                echo "<td>$linha[tamanho]</td>";
-                echo "<td>$linha[tamanhoCintura]</td>";
-                echo "<td>$linha[tamanhoQuadril]</td>";
-                echo "<td>$linha[tamanhoGanchoTraseiro]</td>";
-                echo "<td>$linha[tamanhoComprimentoPernaLateral]</td>";
-                echo "<td>$linha[tamanhoComprimentoFrentePerna]</td>";
-                echo "<td>$linha[tamanhoLaguraPerna]</td>";
+                echo "<td>$linha[idPedido]</td>";
+                echo "<td>$linha[data_Cadastro]</td>";
+                echo "<td>$linha[nome_fantasia]</td>";
+                echo "<td>$linha[dataEntrega]</td>";
 
                 echo '<td>';
 
-                echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
+                echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
 
                 echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                 echo '</a>';
 
                 echo '<td>';
 
-                echo "<a href='backend/excluir_Produto.php?cod=$linha[idProduto]'>";
+                echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
                 echo "<i class='fa-solid fa-trash fa-2x'></i>";
                 echo '</a>';
 

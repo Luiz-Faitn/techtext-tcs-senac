@@ -1,5 +1,5 @@
 <?php
-  
+
 //Conexão com o banco para aparecer o idCliente no cadastro. 
 include "../backend/conexao.php";
 
@@ -17,9 +17,9 @@ if (isset($_GET)) {
 
   $pedido = mysqli_fetch_array($resultado);
 
-if (!$resultado) {
+  if (!$resultado) {
     echo "Erro: " . mysqli_error($conexao);
-}
+  }
 }
 
 ?>
@@ -77,6 +77,13 @@ if (!$resultado) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -88,10 +95,10 @@ if (!$resultado) {
 
             <div class="editar__form_item editar__form_item-large">
               <?php
-                if ($_GET) {
+              if ($_GET) {
                 echo "<label class='editar__form_item_label'>Código</label>";
                 echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
-                }
+              }
               ?>
             </div>
 
@@ -106,18 +113,18 @@ if (!$resultado) {
               <select name="cliente">
                 <option>Selecione</option>
                 <?php
-                while($cliente = mysqli_fetch_array($resultadoCliente)){
-                    
-                      if($cliente['idCliente'] == $pedido['idCliente']){
-                         echo "<option value='$cliente[idCliente]' selected='selected'>";
-                      }else{
-                         echo "<option value='$cliente[idCliente]'>";
-                      }
-                      
-                      echo $cliente['nome_fantasia'];
-                      echo "</option>";
+                while ($cliente = mysqli_fetch_array($resultadoCliente)) {
+
+                  if ($cliente['idCliente'] == $pedido['idCliente']) {
+                    echo "<option value='$cliente[idCliente]' selected='selected'>";
+                  } else {
+                    echo "<option value='$cliente[idCliente]'>";
+                  }
+
+                  echo $cliente['nome_fantasia'];
+                  echo "</option>";
                 }
-            ?>
+                ?>
             </div>
 
             <div class="cadastro__form_item cadastro__form_item-large">

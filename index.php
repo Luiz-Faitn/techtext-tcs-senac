@@ -51,6 +51,13 @@
                 <a href="Frontend/listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="Frontend/novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 

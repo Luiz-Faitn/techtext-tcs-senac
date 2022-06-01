@@ -3,16 +3,16 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
-    $data = $_GET['search'];
-    $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
+  $data = $_GET['search'];
+  $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
     or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%' ORDER BY idProduto DESC";
 } else {
-    $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
+  $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    echo 'ERRO: ' . mysqli_error($conexao);
+  echo 'ERRO: ' . mysqli_error($conexao);
 }
 
 ?>
@@ -70,6 +70,13 @@ if (!$resultado) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -114,42 +121,42 @@ if (!$resultado) {
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                //PHP para mostrar os clientes listados.
-                echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idProduto]</td>";
-                echo "<td>$linha[tipoTecido]</td>";
-                echo "<td>$linha[tipoForro]</td>";
-                echo "<td>$linha[obesrvacao]</td>";
-                echo "<td>$linha[descricaoBotao]</td>";
-                echo "<td>$linha[descricaoRibite]</td>";
-                echo "<td>$linha[placa]</td>";
-                echo "<td>$linha[quantidadeBotao]</td>";
-                echo "<td>$linha[quantidadeRibite]</td>";
-                echo "<td>$linha[quantidadePlaca]</td>";
-                echo "<td>$linha[tamanho]</td>";
-                echo "<td>$linha[tamanhoCintura]</td>";
-                echo "<td>$linha[tamanhoQuadril]</td>";
-                echo "<td>$linha[tamanhoGanchoTraseiro]</td>";
-                echo "<td>$linha[tamanhoComprimentoPernaLateral]</td>";
-                echo "<td>$linha[tamanhoComprimentoFrentePerna]</td>";
-                echo "<td>$linha[tamanhoLaguraPerna]</td>";
+                  //PHP para mostrar os clientes listados.
+                  echo "<table class='lista__conteudo'>";
+                  echo "<td>$linha[idProduto]</td>";
+                  echo "<td>$linha[tipoTecido]</td>";
+                  echo "<td>$linha[tipoForro]</td>";
+                  echo "<td>$linha[obesrvacao]</td>";
+                  echo "<td>$linha[descricaoBotao]</td>";
+                  echo "<td>$linha[descricaoRibite]</td>";
+                  echo "<td>$linha[placa]</td>";
+                  echo "<td>$linha[quantidadeBotao]</td>";
+                  echo "<td>$linha[quantidadeRibite]</td>";
+                  echo "<td>$linha[quantidadePlaca]</td>";
+                  echo "<td>$linha[tamanho]</td>";
+                  echo "<td>$linha[tamanhoCintura]</td>";
+                  echo "<td>$linha[tamanhoQuadril]</td>";
+                  echo "<td>$linha[tamanhoGanchoTraseiro]</td>";
+                  echo "<td>$linha[tamanhoComprimentoPernaLateral]</td>";
+                  echo "<td>$linha[tamanhoComprimentoFrentePerna]</td>";
+                  echo "<td>$linha[tamanhoLaguraPerna]</td>";
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
+                  echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
 
-                echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
-                echo '</a>';
+                  echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
+                  echo '</a>';
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='../backend/excluir_Produto.php?cod=$linha[idProduto]'>";
-                echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                echo '</a>';
+                  echo "<a href='../backend/excluir_Produto.php?cod=$linha[idProduto]'>";
+                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                  echo '</a>';
 
-                echo '</td>';
-                echo '</tr>';
-                echo '</table>';
+                  echo '</td>';
+                  echo '</tr>';
+                  echo '</table>';
                 } ?>
               </tbody>
             </table>

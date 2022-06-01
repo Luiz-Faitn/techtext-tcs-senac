@@ -3,15 +3,15 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para listar os pedidos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
-    $data = $_GET['search'];
-    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega
+  $data = $_GET['search'];
+  $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega
             FROM pedido p
             JOIN cliente c
             ON c.idCliente = p.idCliente
-            WHERE p.idPedido LIKE '%$data%' or c.nome_fantasia
+            WHERE p.idPedido LIKE '%$data%' or c.nome_fantasia LIKE '%$data%'
             ORDER BY nome_fantasia DESC";
 } else {
-    $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega 
+  $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega 
             FROM pedido p
             JOIN cliente c
             ON c.idCliente = p.idCliente
@@ -20,7 +20,7 @@ if (!empty($_GET['search'])) {
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    echo 'ERRO: ' . mysqli_error($conexao);
+  echo 'ERRO: ' . mysqli_error($conexao);
 }
 
 ?>
@@ -78,6 +78,13 @@ if (!$resultado) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -109,29 +116,29 @@ if (!$resultado) {
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                //PHP para mostrar os pedidos listados.
-                echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idPedido]</td>";
-                echo "<td>$linha[data_Cadastro]</td>";
-                echo "<td>$linha[nome_fantasia]</td>";
-                echo "<td>$linha[dataEntrega]</td>";
+                  //PHP para mostrar os pedidos listados.
+                  echo "<table class='lista__conteudo'>";
+                  echo "<td>$linha[idPedido]</td>";
+                  echo "<td>$linha[data_Cadastro]</td>";
+                  echo "<td>$linha[nome_fantasia]</td>";
+                  echo "<td>$linha[dataEntrega]</td>";
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
+                  echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
 
-                echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
-                echo '</a>';
+                  echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
+                  echo '</a>';
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
-                echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                echo '</a>';
+                  echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
+                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                  echo '</a>';
 
-                echo '</td>';
-                echo '</tr>';
-                echo '</table>';
+                  echo '</td>';
+                  echo '</tr>';
+                  echo '</table>';
                 } ?>
               </tbody>
             </table>

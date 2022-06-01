@@ -3,17 +3,17 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para pegar o produto que será editado.
 if (isset($_GET)) {
-    $sql = "SELECT modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa, quantidadeBotao, quantidadeRibite,
+  $sql = "SELECT modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa, quantidadeBotao, quantidadeRibite,
     quantidadePlaca, tamanho, tamanhoCintura, tamanhoQuadril, tamanhoGanchoTraseiro, tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna,
     tamanhoLaguraPerna
     FROM produto WHERE idProduto = $_GET[cod]";
 
-    $resultado = mysqli_query($conexao, $sql);
+  $resultado = mysqli_query($conexao, $sql);
 
-    $produto = mysqli_fetch_array($resultado);
+  $produto = mysqli_fetch_array($resultado);
 
   if (!$resultado) {
-      echo "Erro: " . mysqli_error($conexao);
+    echo "Erro: " . mysqli_error($conexao);
   }
 }
 ?>
@@ -71,6 +71,13 @@ if (isset($_GET)) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -81,10 +88,10 @@ if (isset($_GET)) {
 
             <div class="editar__form_item editar__form_item-large">
               <?php
-                if ($_GET) {
+              if ($_GET) {
                 echo "<label class='editar__form_item_label'>Código</label>";
                 echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
-                }
+              }
               ?>
             </div>
 

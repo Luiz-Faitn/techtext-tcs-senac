@@ -3,15 +3,15 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
-    $data = $_GET['search'];
-    $sql = "SELECT * FROM cliente WHERE idCliente LIKE '%$data%' or razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%' ORDER BY idCliente DESC";
+  $data = $_GET['search'];
+  $sql = "SELECT * FROM cliente WHERE idCliente LIKE '%$data%' or razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%' ORDER BY idCliente DESC";
 } else {
-    $sql = 'SELECT * FROM cliente ORDER BY idCliente DESC';
+  $sql = 'SELECT * FROM cliente ORDER BY idCliente DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    echo 'ERRO: ' . mysqli_error($conexao);
+  echo 'ERRO: ' . mysqli_error($conexao);
 }
 
 ?>
@@ -69,6 +69,13 @@ if (!$resultado) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -100,29 +107,29 @@ if (!$resultado) {
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                //PHP para mostrar os clientes listados.
-                echo "<table class='lista__conteudo'>";
-                echo "<td>$linha[idCliente]</td>";
-                echo "<td>$linha[razao_social]</td>";
-                echo "<td>$linha[nome_fantasia]</td>";
-                echo "<td>$linha[marca]</td>";
+                  //PHP para mostrar os clientes listados.
+                  echo "<table class='lista__conteudo'>";
+                  echo "<td>$linha[idCliente]</td>";
+                  echo "<td>$linha[razao_social]</td>";
+                  echo "<td>$linha[nome_fantasia]</td>";
+                  echo "<td>$linha[marca]</td>";
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='editar_cliente.php?cod=$linha[idCliente]'>";
+                  echo "<a href='editar_cliente.php?cod=$linha[idCliente]'>";
 
-                echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
-                echo '</a>';
+                  echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
+                  echo '</a>';
 
-                echo '<td>';
+                  echo '<td>';
 
-                echo "<a href='../backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
-                echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                echo '</a>';
+                  echo "<a href='../backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
+                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                  echo '</a>';
 
-                echo '</td>';
-                echo '</tr>';
-                echo '</table>';
+                  echo '</td>';
+                  echo '</tr>';
+                  echo '</table>';
                 } ?>
               </tbody>
             </table>

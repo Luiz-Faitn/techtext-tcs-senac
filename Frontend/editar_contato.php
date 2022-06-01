@@ -3,14 +3,14 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para pegar o contato que será editado.
 if (isset($_GET)) {
-    $sql = "SELECT razao_social, nome_fantasia, marca FROM cliente WHERE idCliente = $_GET[cod]";
+  $sql = "SELECT idCliente, email, telefone FROM contato WHERE idContato = $_GET[cod]";
 
-    $resultado = mysqli_query($conexao, $sql);
+  $resultado = mysqli_query($conexao, $sql);
 
-    $cliente = mysqli_fetch_array($resultado);
+  $contato = mysqli_fetch_array($resultado);
 
   if (!$resultado) {
-      echo "Erro: " . mysqli_error($conexao);
+    echo "Erro: " . mysqli_error($conexao);
   }
 }
 ?>
@@ -68,39 +68,46 @@ if (isset($_GET)) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Edição de Cliente -->
+        <!-- Edição de Contato -->
         <div class="editar">
           <h1 class="editar__h1">Edição de Contatos</h1>
-          <form method="post" action="../backend/gravar_Cliente.php" class="editar__form">
+          <form method="post" action="../backend/gravar_Contato.php" class="editar__form">
 
             <div class="editar__form_item editar__form_item-large">
               <?php
-                if ($_GET) {
+              if ($_GET) {
                 echo "<label class='editar__form_item_label'>Código</label>";
                 echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
-                }
+              }
               ?>
             </div>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Código Cliente</label>
-              <input type="text" name="idCliente" id="idCliente" readonly="readonly" 
-              value="<?php echo $cliente['idCliente'] ?>" />
+              <input type="text" name="cliente" id="cliente" readonly="readonly"
+                value="<?php echo $contato['idCliente'] ?>" />
             </div>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">E-mail</label>
-              <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100"
-                value="<?php echo $cliente['nome_fantasia'] ?>" />
+              <input type="text" name="email" placeholder="E-mail" id="email" required maxlength="150"
+                value="<?php echo $contato['email'] ?>" />
             </div>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Telefone</label>
-              <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100"
-                value="<?php echo $cliente['marca'] ?>" />
+              <input type="text" name="telefone" placeholder="Telefone" id="telefone" required maxlength="100"
+                value="<?php echo $contato['telefone'] ?>" />
             </div>
 
             <div class="editar__form_button_container">
@@ -108,7 +115,7 @@ if (isset($_GET)) {
                 Editar
               </button>
               <button type="submit" class="editar__form_button editar__form_button-reset"
-                onclick="window.location='listar_cliente.php';">
+                onclick="window.location='listar_contato.php';">
                 Cancelar </button>
             </div>
           </form>

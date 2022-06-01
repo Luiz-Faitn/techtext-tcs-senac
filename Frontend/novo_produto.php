@@ -51,6 +51,13 @@
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -78,13 +85,13 @@
 
             <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
               <label class="cadastro__form_item_label">Observação</label>
-              <textarea class="field" name="obesrvacao" placeholder="Obervação..." id="obesrvacao"></textarea>
+              <textarea class="field" name="obesrvacao" placeholder="Observação..." id="obesrvacao"></textarea>
             </div>
 
             <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
               <label class="cadastro__form_item_label">Descrição do Botão</label>
-              <textarea class="field" name="descricaoBotao" placeholder="Descrição do Botão..."
-                id="descricaoBotao"> </textarea>
+              <textarea class="field" name="descricaoBotao" placeholder="Descrição do Botão.."
+                id="descricaoBotao"></textarea>
             </div>
 
             <div class="cadastro__form_item cadastro__form_item_produto-large">

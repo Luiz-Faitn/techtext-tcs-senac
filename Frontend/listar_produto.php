@@ -99,22 +99,22 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Modelo</th>
-                  <th>tipo de Tecido</th>
-                  <th>Tipo de Forro</th>
-                  <th>Observação</th>
-                  <th>Descrição do Botão</th>
-                  <th>Descrição do Ribite</th>
-                  <th>Descrição da Placa</th>
-                  <th>Quantidade de Botão</th>
-                  <th>Quantidade de Ribite</th>
-                  <th>Quantidade de Placa</th>
-                  <th>Tamanho</th>
-                  <th>Tamanho da Cintura</th>
-                  <th>Tamanho do Quadril</th>
-                  <th>Comprimento do Gancho Traseiro</th>
-                  <th>Tamanho Comprimento da Perna Lateral</th>
-                  <th>Tamanho Comprimento da Frente da Perna</th>
+                  <th>Model</th>
+                  <th>Tipo Tecido</th>
+                  <th>Tipo Forro</th>
+                  <th>Obs</th>
+                  <th>Desc. Botão</th>
+                  <th>Desc. Ribite</th>
+                  <th>Desc. Placa</th>
+                  <th>Qtde. Botão</th>
+                  <th>Qtde. Ribite</th>
+                  <th>Qtde. Placa</th>
+                  <th>Tam.</th>
+                  <th>Tam. Cintura</th>
+                  <th>Tam. Quadril</th>
+                  <th>Comp. Gancho Traseiro</th>
+                  <th>Tam. Comp. Perna Lateral</th>
+                  <th>Tam. Comp. Frente da Perna</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
@@ -185,7 +185,7 @@ if (!$resultado) {
 
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
-          window.location = 'listar_cliente.php?search=' + search.value;
+          window.location = 'listar_produto.php?search=' + search.value;
         }
         </script>
       </div>

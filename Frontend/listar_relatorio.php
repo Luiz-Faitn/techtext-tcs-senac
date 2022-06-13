@@ -1,13 +1,25 @@
 <?php
 include "../backend/conexao.php";
 
-//Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
+//Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
-    or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%' ORDER BY idProduto DESC";
+  $sql = "SELECT i.iditens_pedido, i.idPedido, i.idProduto, i.quantidade
+          FROM itens_pedido i
+          LEFT JOIN pedido p
+          ON p.idPedido = i.iditens_pedido
+          LEFT JOIN produto pr
+          ON pr.idProduto = i.iditens_pedido
+          WHERE idPedido LIKE '%$data%'
+          ORDER BY idPedido DESC";
 } else {
-  $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
+  $sql = 'SELECT i.iditens_pedido, i.idPedido, i.idProduto, i.quantidade
+          FROM itens_pedido i
+          LEFT JOIN pedido p
+          ON p.idPedido = i.iditens_pedido
+          LEFT JOIN produto pr
+          ON pr.idProduto = i.iditens_pedido
+          ORDER BY idPedido DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -24,7 +36,7 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Produtos</title>
+  <title>Lista de Clientes</title>
   <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -82,7 +94,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Produtos</h1>
+            <h1 class="lista__h1">Lista de Clientes</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -99,23 +111,9 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Modelo</th>
-                  <th>Tipo Tecido</th>
-                  <th>Tipo Forro</th>
-                  <th>Obs.</th>
-                  <th>Desc. Botão</th>
-                  <th>Desc. Ribite</th>
-                  <th>Desc. Placa</th>
-                  <th>Qtde. Botão</th>
-                  <th>Qtde. Ribite</th>
-                  <th>Qtde. Placa</th>
-                  <th>Tam.</th>
-                  <th>Tam. Cintura</th>
-                  <th>Tam. Quadril</th>
-                  <th>Comp. Gancho Traseiro</th>
-                  <th>Tam. Comp. Perna Lateral</th>
-                  <th>Tam. Comp. Frente da Perna</th>
-                  <th>Tam. Larg. Perna</th>
+                  <th>Código Pedido</th>
+                  <th>Código Produto</th>
+                  <th>Quantidade</th>
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
@@ -124,35 +122,21 @@ if (!$resultado) {
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
                   //PHP para mostrar os clientes listados.
                   echo "<table class='lista__conteudo'>";
+                  echo "<td>$linha[iditens_pedido]</td>";
+                  echo "<td>$linha[idPedido]</td>";
                   echo "<td>$linha[idProduto]</td>";
-                  echo "<td>$linha[modelo]</td>";
-                  echo "<td>$linha[tipoTecido]</td>";
-                  echo "<td>$linha[tipoForro]</td>";
-                  echo "<td>$linha[obesrvacao]</td>";
-                  echo "<td>$linha[descricaoBotao]</td>";
-                  echo "<td>$linha[descricaoRibite]</td>";
-                  echo "<td>$linha[placa]</td>";
-                  echo "<td>$linha[quantidadeBotao]</td>";
-                  echo "<td>$linha[quantidadeRibite]</td>";
-                  echo "<td>$linha[quantidadePlaca]</td>";
-                  echo "<td>$linha[tamanho]</td>";
-                  echo "<td>$linha[tamanhoCintura]</td>";
-                  echo "<td>$linha[tamanhoQuadril]</td>";
-                  echo "<td>$linha[tamanhoGanchoTraseiro]</td>";
-                  echo "<td>$linha[tamanhoComprimentoPernaLateral]</td>";
-                  echo "<td>$linha[tamanhoComprimentoFrentePerna]</td>";
-                  echo "<td>$linha[tamanhoLaguraPerna]</td>";
+                  echo "<td>$linha[quantidade]</td>";
 
                   echo '<td>';
 
-                  echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
+                  echo "<a href='editar_relatorio.php?cod=$linha[iditens_pedido]'>";
 
                   echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                   echo '</a>';
 
                   echo '<td>';
 
-                  echo "<a href='../backend/excluir_Produto.php?cod=$linha[idProduto]'>";
+                  echo "<a href='../backend/excluir_Itens_Pedido.php?cod=$linha[iditens_pedido]'>";
                   echo "<i class='fa-solid fa-trash fa-2x'></i>";
                   echo '</a>';
 
@@ -187,7 +171,7 @@ if (!$resultado) {
 
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
-          window.location = 'listar_produto.php?search=' + search.value;
+          window.location = 'listar_cliente.php?search=' + search.value;
         }
         </script>
       </div>

@@ -78,7 +78,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
           <!-- Cadastro de Pedidos -->
           <form method="post" action="../backend/gravar_Pedido.php" class="cadastro__form">
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data do Cadastro</label>
               <input type="date" name="data_Cadastro" id="data_Cadastro" required />
             </div>
@@ -103,7 +103,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
               </select>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data de Entrega</label>
               <input type="date" name="dataEntrega" id="dataEntrega" required />
             </div>

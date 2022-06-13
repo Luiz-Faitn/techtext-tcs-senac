@@ -67,99 +67,118 @@
           <!-- Cadastro de produtos -->
           <form method="post" action="../backend/gravar_Produto.php" class="cadastro__form_produto">
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Modelo</label>
-              <input type="text" name="modelo" placeholder="Modelo" id="modelo" required maxlength="200" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Modelo</label>
+                <input type="text" name="modelo" placeholder="Modelo" id="modelo" required maxlength="200" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tipo de Tecido</label>
+                <input type="text" name="tipoTecido" placeholder="Tipo de Tecido" id="tipoTecido" required
+                  maxlength="300" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item-produto-large">
-              <label class="cadastro__form_item_label">Tipo de Tecido</label>
-              <input type="text" name="tipoTecido" placeholder="Tipo de Tecido" id="tipoTecido" required
-                maxlength="300" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tipo de Forro</label>
+                <input type="text" name="tipoForro" placeholder="Tipo de Forro" id="tipoForro" required
+                  maxlength="300" />
+              </div>
+
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Observação</label>
+                <input type="text" name="obesrvacao" placeholder="Observação..." id="obesrvacao" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tipo de Forro</label>
-              <input type="text" name="tipoForro" placeholder="Tipo de Forro" id="tipoForro" required maxlength="300" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição do Botão</label>
+                <input type="text" name="descricaoBotao" placeholder="Descrição do Botão.." id="descricaoBotao" />
+              </div>
+
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição do Ribite</label>
+                <input type="text" name="descricaoRibite" placeholder="Descrição do Ribite..." id="descricaoRibite" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Observação</label>
-              <textarea class="field" name="obesrvacao" placeholder="Observação..." id="obesrvacao"></textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição da Placa</label>
+                <input type="text" name="placa" placeholder="Descrição da Placa..." id="placa" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade do Botão</label>
+                <input type="number" name="quantidadeBotao" placeholder="Quantidade do Botão" id="quantidadeBotao" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Descrição do Botão</label>
-              <textarea class="field" name="descricaoBotao" placeholder="Descrição do Botão.."
-                id="descricaoBotao"></textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade do Ribite</label>
+                <input type="number" name="quantidadeRibite" placeholder="Quantidade do Ribite" id="quantidadeRibite" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade da Placa</label>
+                <input type="number" name="quantidadePlaca" placeholder="Quantidade do Placa" id="quantidadePlaca" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Descrição do Ribite</label>
-              <textarea class="field" name="descricaoRibite" placeholder="Descrição do Ribite..."
-                id="descricaoRibite"></textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho</label>
+                <input type="number" name="tamanho" placeholder="Tamanho" id="tamanho" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho da Cintura</label>
+                <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura" id="tamanhoCintura" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Descrição da Placa</label>
-              <input type="text" name="placa" placeholder="Descrição da Placa..." id="placa" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho do Quadril</label>
+                <input type="number" name="tamanhoQuadril" placeholder="Tamanho do Quadril" id="tamanhoQuadril" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho do Grancho Traseiro</label>
+                <input type="number" name="tamanhoGanchoTraseiro" placeholder="Tamanho do Gancho Traseiro"
+                  id="tamanhoGanchoTraseiro" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Quantidade do Botão</label>
-              <input type="number" name="quantidadeBotao" placeholder="Quantidade do Botão" id="quantidadeBotao" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Comprimento da Perna Lateral</label>
+                <input type="number" name="tamanhoComprimentoPernaLateral" placeholder="Comprimento da Perna Lateral"
+                  id="tamanhoComprimentoPernaLateral" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Comprimento Frente da Perna</label>
+                <input type="number" name="tamanhoComprimentoFrentePerna" placeholder="Comprimento Frente da Perna"
+                  id="tamanhoComprimentoFrentePerna" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Quantidade do Ribite</label>
-              <input type="number" name="quantidadeRibite" placeholder="Quantidade do Ribite" id="quantidadeRibite" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho da Largura da Perna</label>
+                <input type="number" name="tamanhoLaguraPerna" placeholder="Tamanho da Largura da Perna"
+                  id="tamanho_largura_pernatamanhoLaguraPerna" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Quantidade da Placa</label>
-              <input type="number" name="quantidadePlaca" placeholder="Quantidade do Placa" id="quantidadePlaca" />
-            </div>
-
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tamanho</label>
-              <input type="number" name="tamanho" placeholder="Tamanho" id="tamanho" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tamanho da Cintura</label>
-              <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura" id="tamanhoCintura" />
-            </div>
-
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tamanho do Quadril</label>
-              <input type="number" name="tamanhoQuadril" placeholder="Tamanho do Quadril" id="tamanhoQuadril" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tamanho do Grancho Traseiro</label>
-              <input type="number" name="tamanhoGanchoTraseiro" placeholder="Tamanho do Gancho Traseiro"
-                id="tamanhoGanchoTraseiro" />
-            </div>
-
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Comprimento da Perna Lateral</label>
-              <input type="number" name="tamanhoComprimentoPernaLateral" placeholder="Comprimento da Perna Lateral"
-                id="tamanhoComprimentoPernaLateral" />
-            </div>
-
-            <div class="cadastro__form_item_produto cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Comprimento Frente da Perna</label>
-              <input type="number" name="tamanhoComprimentoFrentePerna" placeholder="Comprimento Frente da Perna"
-                id="tamanhoComprimentoFrentePerna" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item_produto-large">
-              <label class="cadastro__form_item_label">Tamanho da Largura da Perna</label>
-              <input type="number" name="tamanhoLaguraPerna" placeholder="Tamanho da Largura da Perna"
-                id="tamanho_largura_pernatamanhoLaguraPerna" />
-            </div>
-
-            <div class=" cadastro__form_button_container">
+            <div class="cadastro__form_button_container">
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>

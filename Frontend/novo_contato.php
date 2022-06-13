@@ -98,12 +98,12 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
               </select>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">E-mail</label>
               <input type="email" name="email" placeholder="E-mail" id="email" required maxlength="150" />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Telefone</label>
               <input type="text" name="telefone" placeholder="Telefone" id="telefone" required maxlength="100" />
             </div>

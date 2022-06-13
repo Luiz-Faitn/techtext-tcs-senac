@@ -67,18 +67,18 @@
           <!-- Cadastro de Cliente -->
           <form method="post" action="../backend/gravar_Cliente.php" class="cadastro__form">
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Razão Social</label>
               <input type="text" name="razao_social" placeholder="Razão Social" id="razao_social" required
                 maxlength="150" />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Nome</label>
               <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100" />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Marca</label>
               <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100" />
             </div>

@@ -94,6 +94,11 @@ main {
   height: 50vh;
 }
 
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .cadastro_produto {
   display: flex;
   flex-direction: column;
@@ -145,8 +150,9 @@ main {
   flex-direction: column;
   justify-content: space-between;
   height: 60%;
-  width: 30%;
+  width: 100%;
   padding-left: 2%;
+  padding-right: 2%;
 }
 
 .cadastro__form_item {
@@ -191,15 +197,21 @@ select::-ms-expand {
   outline: none;
 }
 
-.cadastro__form_item_produto {
-  display: flex;
-}
-
 .editar__form_item {
   display: flex;
 }
 
-.cadastro__form_item > input {
+.input-cadastro {
+  display: flex;
+  width: 97%;
+}
+
+.input-cadastro_produto {
+  display: flex;
+  width: 49%;
+}
+
+.input-cadastro > input {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -208,7 +220,25 @@ select::-ms-expand {
   border: none;
 }
 
-.cadastro__form_item_produto > input {
+.input-cadastro_produto > input {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.input-cadastro > textarea {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.input-cadastro_produto > select {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -226,12 +256,12 @@ select::-ms-expand {
   border: none;
 }
 
-.cadastro__form_item > input:focus {
+.input-cadastro > input:focus {
   border: 2px solid black;
   border-color: #1890ff;
 }
 
-.cadastro__form_item_produto > input:focus {
+.input-cadastro_produto > input:focus {
   border: 2px solid black;
   border-color: #1890ff;
 }
@@ -241,10 +271,11 @@ select::-ms-expand {
   border-color: #1890ff;
 }
 
-.cadastro__form_item > input:invalid {
+.input-cadastro > input:invalid {
   border-color: red;
 }
-.cadastro__form_item_produto > input:invalid {
+
+.input-cadastro_produto > input:invalid {
   border-color: red;
 }
 
@@ -252,23 +283,16 @@ select::-ms-expand {
   border-color: red;
 }
 
-.cadastro__form_item > input:valid {
+.input-cadastro > input:valid {
   border-color: green;
 }
-.cadastro__form_item_produto > input:valid {
+
+.input-cadastro_produto > input:valid {
   border-color: green;
 }
 
 .editar__form_item > input:valid {
   border-color: green;
-}
-
-.cadastro__form_item-large {
-  width: 97%;
-}
-
-.cadastro__form_item_produto-large {
-  width: 100%;
 }
 
 .editar__form_item-large {

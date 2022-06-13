@@ -34,7 +34,7 @@ $resultadoProduto = mysqli_query($conexao, $sqlProduto);
 
 <body>
   <main>
-    
+
     <div class="background-image">
       <div class="background-image_gradient">
 
@@ -132,7 +132,7 @@ $resultadoProduto = mysqli_query($conexao, $sqlProduto);
               </select>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Quantidade</label>
               <input type="number" name="quantidade" placeholder="Quantidade" id="quantidade" required
                 maxlength="100" />

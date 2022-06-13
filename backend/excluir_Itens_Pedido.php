@@ -1,12 +1,13 @@
 <?php
-    include 'conexao.php';
 
-    $id = $_GET['cod'];
+include 'conexao.php';
 
-    $sql = "DELETE FROM itens_pedido WHERE iditens_pedido = $id";
+$sql = "DELETE FROM itens_pedido WHERE iditens_pedido = $_GET[cod]";
 
-    if(!mysqli_query($conexao, $sql)){
-       die("Erro: " . mysqli_error($conexao));
-    }else{
-       header("location: listaItensPedido.php");
-    }
+$resultado = mysqli_query($conexao, $sql);
+
+if ($resultado) {
+   header('location:../Frontend/listar_relatorio.php');
+} else {
+   echo "Erro: " . mysqli_error($conexao);
+}

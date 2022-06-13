@@ -102,16 +102,16 @@ if (isset($_GET)) {
               ?>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data do Cadastro</label>
               <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>"
                 required />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="cadastro__form_select">
               <label class="cadastro__form_item_label">Cliente</label>
-              <select name="cliente">
-                <option>Selecione</option>
+              <select name="cliente" class="select" id="select">
+                <option selected disabled>Selecione</option>
                 <?php
                 while ($cliente = mysqli_fetch_array($resultadoCliente)) {
 
@@ -125,9 +125,10 @@ if (isset($_GET)) {
                   echo "</option>";
                 }
                 ?>
+              </select>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data de Entrega</label>
               <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>"
                 required />

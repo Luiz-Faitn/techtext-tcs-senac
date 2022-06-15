@@ -383,7 +383,20 @@ select::-ms-expand {
   margin-left: 295px;
 }
 
+.inicial {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+}
+
 .lista__h1 {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: 2% 0px 5%;
+}
+
+.inicial__h1 {
   display: flex;
   align-self: center;
   justify-self: center;

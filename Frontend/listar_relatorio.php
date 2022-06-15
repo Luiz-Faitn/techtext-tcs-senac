@@ -4,22 +4,16 @@ include "../backend/conexao.php";
 //Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT i.iditens_pedido, i.idPedido, i.idProduto, i.quantidade
+  $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
           FROM itens_pedido i
-          LEFT JOIN pedido p
-          ON p.idPedido = i.iditens_pedido
-          LEFT JOIN produto pr
-          ON pr.idProduto = i.iditens_pedido
-          WHERE idPedido LIKE '%$data%'
-          ORDER BY idPedido DESC";
+          LEFT JOIN pedido p ON p.idPedido = i.idPedido
+          LEFT JOIN produto pr on pr.idProduto = i.idProduto
+          WHERE i.iditens_pedido LIKE '%$data%' pr.modelo LIKE '%$data%'";
 } else {
-  $sql = 'SELECT i.iditens_pedido, i.idPedido, i.idProduto, i.quantidade
+  $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
           FROM itens_pedido i
-          LEFT JOIN pedido p
-          ON p.idPedido = i.iditens_pedido
-          LEFT JOIN produto pr
-          ON pr.idProduto = i.iditens_pedido
-          ORDER BY idPedido DESC';
+          LEFT JOIN pedido p ON p.idPedido = i.idPedido
+          LEFT JOIN produto pr on pr.idProduto = i.idProduto";
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -36,7 +30,7 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Clientes</title>
+  <title>Relatório</title>
   <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -87,6 +81,7 @@ if (!$resultado) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
             </div>
           </div>
@@ -94,7 +89,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Clientes</h1>
+            <h1 class="lista__h1">Relatório</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -111,10 +106,10 @@ if (!$resultado) {
               <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Código Pedido</th>
-                  <th>Código Produto</th>
+                  <th>Data de Cadastro</th>
+                  <th>Produto</th>
                   <th>Quantidade</th>
-                  <th>Editar</th>
+                  <th>Imprimir</th>
                   <th>Excluir</th>
                 </tr>
               </thead>
@@ -123,8 +118,8 @@ if (!$resultado) {
                   //PHP para mostrar os clientes listados.
                   echo "<table class='lista__conteudo'>";
                   echo "<td>$linha[iditens_pedido]</td>";
-                  echo "<td>$linha[idPedido]</td>";
-                  echo "<td>$linha[idProduto]</td>";
+                  echo "<td>$linha[data_Cadastro]</td>";
+                  echo "<td>$linha[modelo]</td>";
                   echo "<td>$linha[quantidade]</td>";
 
                   echo '<td>';
@@ -171,7 +166,7 @@ if (!$resultado) {
 
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
-          window.location = 'listar_cliente.php?search=' + search.value;
+          window.location = 'listar_relatorio.php?search=' + search.value;
         }
         </script>
       </div>

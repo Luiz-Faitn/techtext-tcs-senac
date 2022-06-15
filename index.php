@@ -56,6 +56,7 @@
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="Frontend/novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="Frontend/listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
             </div>
           </div>

@@ -76,6 +76,7 @@ if (isset($_GET)) {
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
             </div>
           </div>

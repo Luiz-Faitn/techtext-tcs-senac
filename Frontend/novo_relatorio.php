@@ -78,6 +78,7 @@ $resultadoProduto = mysqli_query($conexao, $sqlProduto);
                   class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
             </div>
           </div>
@@ -125,7 +126,7 @@ $resultadoProduto = mysqli_query($conexao, $sqlProduto);
                     echo "<option value='$resultado[idProduto]'>";
                   }
 
-                  echo $resultado['tipoTecido'];
+                  echo $resultado['modelo'];
                   echo "</option>";
                 }
                 ?>

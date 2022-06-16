@@ -1,6 +1,9 @@
 <?php
 include "../backend/conexao.php";
 
+//Definir o horário padrão brasileiro.
+date_default_timezone_set("America/Sao_Paulo");
+
 //Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
@@ -13,7 +16,8 @@ if (!empty($_GET['search'])) {
   $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
           FROM itens_pedido i
           LEFT JOIN pedido p ON p.idPedido = i.idPedido
-          LEFT JOIN produto pr on pr.idProduto = i.idProduto";
+          LEFT JOIN produto pr on pr.idProduto = i.idProduto
+          ORDER BY iditens_pedido DESC;";
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -118,15 +122,18 @@ if (!$resultado) {
                   //PHP para mostrar os clientes listados.
                   echo "<table class='lista__conteudo'>";
                   echo "<td>$linha[iditens_pedido]</td>";
-                  echo "<td>$linha[data_Cadastro]</td>";
+
+                  $data_Cadastro = $linha['data_Cadastro'];
+                  $novaData_Cadastro = date("d/m/Y", strtotime($data_Cadastro));
+                  echo "<td>$novaData_Cadastro</td>";
+
                   echo "<td>$linha[modelo]</td>";
                   echo "<td>$linha[quantidade]</td>";
 
                   echo '<td>';
 
-                  echo "<a href='editar_relatorio.php?cod=$linha[iditens_pedido]'>";
-
-                  echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
+                  echo "<a href='javascript:pdf(cod=$linha[iditens_pedido])'>";
+                  echo "<i class='fa-solid fa-print fa-2x'>";
                   echo '</a>';
 
                   echo '<td>';
@@ -167,6 +174,16 @@ if (!$resultado) {
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
           window.location = 'listar_relatorio.php?search=' + search.value;
+        }
+
+
+        var cod = document.getElementById('iditens_pedido').value;
+        //Função para imprimir relatório.
+        function pdf() {
+
+          var janela = window.open("../backend/impressao_relatorio.php?cod=" + cod, "_blank ",
+            "width=1100, height=1000");
+          janela.print();
         }
         </script>
       </div>

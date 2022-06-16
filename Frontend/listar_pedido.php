@@ -1,21 +1,24 @@
 <?php
 include "../backend/conexao.php";
 
+//Definir o horário padrão brasileiro.
+date_default_timezone_set("America/Sao_Paulo");
+
 //Conexão com o banco para listar os pedidos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega
-            FROM pedido p
-            JOIN cliente c
-            ON c.idCliente = p.idCliente
-            WHERE p.idPedido LIKE '%$data%' or c.nome_fantasia LIKE '%$data%'
-            ORDER BY nome_fantasia DESC";
+  $sql = "SELECT p.*, i.iditens_pedido, c.nome_fantasia
+          FROM pedido p
+          LEFT JOIN itens_pedido i on p.idPedido = i.idPedido
+          LEFT JOIN cliente c on p.idCliente = c.idCliente
+          WHERE c.nome_fantasia LIKE '%$data%'
+          ORDER BY nome_fantasia DESC";
 } else {
-  $sql = "SELECT p.idPedido, p.data_Cadastro, c.nome_fantasia, p.dataEntrega 
-            FROM pedido p
-            JOIN cliente c
-            ON c.idCliente = p.idCliente
-            ORDER BY nome_fantasia";
+  $sql = 'SELECT p.*, i.iditens_pedido, c.nome_fantasia
+          FROM pedido p
+          LEFT JOIN itens_pedido i on p.idPedido = i.idPedido
+          LEFT JOIN cliente c on p.idCliente = c.idCliente
+          ORDER BY idPedido DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -120,24 +123,34 @@ if (!$resultado) {
                   //PHP para mostrar os pedidos listados.
                   echo "<table class='lista__conteudo'>";
                   echo "<td>$linha[idPedido]</td>";
-                  echo "<td>$linha[data_Cadastro]</td>";
-                  echo "<td>$linha[nome_fantasia]</td>";
-                  echo "<td>$linha[dataEntrega]</td>";
 
+                  $data_Cadastro = $linha['data_Cadastro'];
+                  $novaData_Cadastro = date("d/m/Y", strtotime($data_Cadastro));
+                  echo "<td>$novaData_Cadastro</td>";
+
+                  echo "<td>$linha[nome_fantasia]</td>";
+
+                  $data_Entrega = $linha['dataEntrega'];
+                  $novaData_Entrega = date("d/m/Y", strtotime($data_Entrega));
+                  echo "<td>$novaData_Entrega</td>";
                   echo '<td>';
 
                   echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
 
                   echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                   echo '</a>';
-
                   echo '<td>';
 
-                  echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
-                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                  echo '</a>';
+                  if ($linha['iditens_pedido'] != NULL) {
+                    echo "<i class='fa-solid fa-lock fa-2x'></i>";
+                    echo '</td>';
+                  } else {
+                    echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
+                    echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                    echo '</a>';
+                    echo '</td>';
+                  }
 
-                  echo '</td>';
                   echo '</tr>';
                   echo '</table>';
                 } ?>

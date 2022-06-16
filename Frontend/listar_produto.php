@@ -4,23 +4,23 @@ include "../backend/conexao.php";
 //Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT * FROM produto WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
-          or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%' ORDER BY idProduto DESC";
+  $sql = "SELECT *, i.iditens_pedido
+          FROM produto
+          LEFT JOIN itens_pedido i on p.idProduto = i.idProduto
+          WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
+          or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%'
+          ORDER BY idProduto DESC";
 } else {
-  $sql = 'SELECT * FROM produto ORDER BY idProduto DESC';
+  $sql = 'SELECT p.*, i.iditens_pedido
+          FROM produto p 
+          LEFT JOIN itens_pedido i on p.idProduto = i.idProduto
+          ORDER BY idProduto DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
   echo 'ERRO: ' . mysqli_error($conexao);
 }
-
-// $sqlValidação = "SELECT pr.idProduto, i.iditens_pedido
-//                  FROM produto pr
-//                  LEFT JOIN itens_pedido i on i.idProduto = pr.idProduto
-//                  WHERE iditens_pedido is null";
-
-// $resultadoValidação = mysqli_query($conexao, $sqlValidação);
 
 ?>
 
@@ -125,15 +125,21 @@ if (!$resultado) {
                   echo '<td>';
 
                   echo "<a href='editar_produto.php?cod=$linha[idProduto]'>";
-
                   echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                   echo '</a>';
                   echo '<td>';
 
-                  echo "<a href='../backend/excluir_Produto.php?cod=$linha[idProduto]'>";
-                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                  echo '</a>';
-                  echo '</td>';
+                  if ($linha['iditens_pedido'] != NULL) {
+                    echo "<i class='fa-solid fa-lock fa-2x'></i>";
+                    echo '</td>';
+                  }
+                  if ($linha['iditens_pedido'] == NULL) {
+                    echo "<a href='../backend/excluir_Produto.php?cod=$linha[idProduto]'>";
+                    echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                    echo '</a>';
+                    echo '</td>';
+                  }
+
 
                   echo '</tr>';
                   echo '</table>';

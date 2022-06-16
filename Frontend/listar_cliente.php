@@ -4,9 +4,18 @@ include "../backend/conexao.php";
 //Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT * FROM cliente WHERE idCliente LIKE '%$data%' or razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%' ORDER BY idCliente DESC";
+  $sql = "SELECT cl.*, co.idContato, p.idPedido
+          FROM cliente cl
+          LEFT JOIN contato co on cl.idCliente = co.idCliente
+          LEFT JOIN pedido p on cl.idCliente = p.idCliente
+          WHERE razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%'
+          ORDER BY idCliente DESC";
 } else {
-  $sql = 'SELECT * FROM cliente ORDER BY idCliente DESC';
+  $sql = 'SELECT cl.*, co.idContato, p.idPedido
+          FROM cliente cl 
+          LEFT JOIN contato co on cl.idCliente = co.idCliente
+          LEFT JOIN pedido p on cl.idCliente = p.idCliente
+          ORDER BY idCliente DESC';
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -121,14 +130,18 @@ if (!$resultado) {
 
                   echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
                   echo '</a>';
-
                   echo '<td>';
 
-                  echo "<a href='../backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
-                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                  echo '</a>';
+                  if ($linha['idContato'] != NULL || $linha['idPedido'] != NULL) {
+                    echo "<i class='fa-solid fa-lock fa-2x'></i>";
+                    echo '</td>';
+                  } else {
+                    echo "<a href='../backend/excluir_Cliente.php?cod=$linha[idCliente]'>";
+                    echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                    echo '</a>';
+                    echo '</td>';
+                  }
 
-                  echo '</td>';
                   echo '</tr>';
                   echo '</table>';
                 } ?>

@@ -11,7 +11,7 @@ if (!empty($_GET['search'])) {
           FROM itens_pedido i
           LEFT JOIN pedido p ON p.idPedido = i.idPedido
           LEFT JOIN produto pr on pr.idProduto = i.idProduto
-          WHERE i.iditens_pedido LIKE '%$data%' pr.modelo LIKE '%$data%'";
+          WHERE i.iditens_pedido LIKE '%$data%' or pr.modelo LIKE '%$data%'";
 } else {
   $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
           FROM itens_pedido i

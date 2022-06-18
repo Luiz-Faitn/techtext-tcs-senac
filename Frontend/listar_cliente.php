@@ -8,7 +8,7 @@ if (!empty($_GET['search'])) {
           FROM cliente cl
           LEFT JOIN contato co on cl.idCliente = co.idCliente
           LEFT JOIN pedido p on cl.idCliente = p.idCliente
-          WHERE razao_social LIKE '%$data%' or nome_fantasia LIKE '%$data%' or marca LIKE '%$data%'
+          WHERE cl.idCliente LIKE '$data%' or cl.razao_social LIKE '%$data%' or cl.nome_fantasia LIKE '%$data%' or cl.marca LIKE '%$data%'
           ORDER BY idCliente DESC";
 } else {
   $sql = 'SELECT cl.*, co.idContato, p.idPedido
@@ -132,7 +132,7 @@ if (!$resultado) {
                   echo '</a>';
                   echo '<td>';
 
-                  if ($linha['idContato'] != NULL || $linha['idPedido'] != NULL) {
+                  if ($linha['idContato'] != NULL or $linha['idPedido'] != NULL) {
                     echo "<i class='fa-solid fa-lock fa-2x'></i>";
                     echo '</td>';
                   } else {

@@ -4,11 +4,11 @@ include "../backend/conexao.php";
 //Conexão com o banco para listar os produtos, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT *, i.iditens_pedido
-          FROM produto
+  $sql = "SELECT p.*, i.iditens_pedido
+          FROM produto p
           LEFT JOIN itens_pedido i on p.idProduto = i.idProduto
-          WHERE idProduto LIKE '%$data%' or modelo LIKE '%$data%' or tipoTecido LIKE '%$data%' or tipoForro LIKE '%$data%'
-          or obesrvacao LIKE '%$data%' or descricaoBotao LIKE '%$data%' or descricaoRibite LIKE '%$data%' or placa LIKE '%$data%'
+          WHERE p.idProduto LIKE '%$data%' or p.modelo LIKE '%$data%' or p.tipoTecido LIKE '%$data%' or p.tipoForro LIKE '%$data%'
+          or p.obesrvacao LIKE '%$data%' or p.descricaoBotao LIKE '%$data%' or p.descricaoRibite LIKE '%$data%' or p.placa LIKE '%$data%'
           ORDER BY idProduto DESC";
 } else {
   $sql = 'SELECT p.*, i.iditens_pedido

@@ -30,7 +30,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -80,7 +80,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
           <form method="post" action="../backend/gravar_Contato.php" class="cadastro__form">
 
             <div class="cadastro__form_select">
-              <label class="cadastro__form_item_label">Código do Cliente</label>
+              <label class="cadastro__form_item_label">Cliente</label>
               <select name="cliente" class="select" id="select">
                 <option selected disabled>Selecione</option>
                 <?php

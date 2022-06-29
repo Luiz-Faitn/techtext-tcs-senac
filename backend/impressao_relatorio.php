@@ -75,7 +75,7 @@ if (isset($_GET)) {
   <div class="impressao">
     <h1 class="imprimir__h1">
       <?php if ($_GET) {
-        echo $relatorio['modelo'];
+        echo "Pedido: ", $relatorio['modelo'];
       }
       ?>
     </h1>

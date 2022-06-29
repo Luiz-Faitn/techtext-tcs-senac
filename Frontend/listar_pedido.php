@@ -49,7 +49,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -181,7 +181,7 @@ if (!$resultado) {
 
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
-          window.location = 'listar_cliente.php?search=' + search.value;
+          window.location = 'listar_pedido.php?search=' + search.value;
         }
         </script>
       </div>

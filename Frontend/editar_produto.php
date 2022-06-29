@@ -39,7 +39,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -96,6 +96,7 @@ if (isset($_GET)) {
                 }
                 ?>
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Modelo</label>
@@ -110,7 +111,7 @@ if (isset($_GET)) {
                 <input type="text" name="tipoTecido" placeholder="Tipo de Tecido" id="tipoTecido" required
                   maxlength="300" value="<?php echo $produto['tipoTecido'] ?>" />
               </div>
-
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Tipo de Forro</label>
@@ -125,6 +126,7 @@ if (isset($_GET)) {
                 <input type="text" name="obesrvacao" placeholder="Obervação..." id="obesrvacao"
                   value="<?php echo $produto['obesrvacao'] ?>" maxlength="25" />
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Descrição do Botão</label>
@@ -139,6 +141,7 @@ if (isset($_GET)) {
                 <input type="text" name="descricaoRibite" placeholder="Descrição do Ribite..." id="descricaoRibite"
                   value="<?php echo $produto['descricaoRibite'] ?>" maxlength="25" />
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Descrição da Placa</label>
@@ -153,6 +156,7 @@ if (isset($_GET)) {
                 <input type="number" name="quantidadeBotao" placeholder="Quantidade do Botão" id="quantidadeBotao"
                   value="<?php echo $produto['quantidadeBotao'] ?>" />
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Quantidade do Ribite</label>
@@ -167,10 +171,11 @@ if (isset($_GET)) {
                 <input type="number" name="quantidadePlaca" placeholder="Quantidade do Placa" id="quantidadePlaca"
                   value="<?php echo $produto['quantidadePlaca'] ?>" />
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Tamanho</label>
-                <input type="number" name="tamanho" placeholder="Tamanho" id="tamanho"
+                <input type="number" name="tamanho" placeholder="Tamanho em cm" id="tamanho"
                   value="<?php echo $produto['tamanho'] ?>" />
               </div>
             </div>
@@ -178,9 +183,10 @@ if (isset($_GET)) {
             <div class="row">
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Tamanho da Cintura</label>
-                <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura" id="tamanhoCintura"
+                <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura em cm" id="tamanhoCintura"
                   value="<?php echo $produto['tamanhoCintura'] ?>" />
               </div>
+              <br><br>
 
               <div class="input-cadastro_produto">
                 <label class="cadastro__form_item_label">Tamanho do Quadril</label>
@@ -222,9 +228,10 @@ if (isset($_GET)) {
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>
-              <button type="reset" class="cadastro__form_button cadastro__form_button-reset">
-                Cancelar
-              </button>
+              <button type="submit" class="editar__form_button editar__form_button-reset"
+                onclick="window.location='listar_produto.php';">
+                Cancelar </button>
+            </div>
             </div>
           </form>
         </div>

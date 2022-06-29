@@ -36,7 +36,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -92,18 +92,21 @@ if (isset($_GET)) {
               }
               ?>
             </div>
+            <br>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Código Cliente</label>
               <input type="text" name="cliente" id="cliente" readonly="readonly"
                 value="<?php echo $contato['idCliente'] ?>" />
             </div>
+            <br>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">E-mail</label>
               <input type="text" name="email" placeholder="E-mail" id="email" required maxlength="150"
                 value="<?php echo $contato['email'] ?>" />
             </div>
+            <br>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Telefone</label>
@@ -117,7 +120,8 @@ if (isset($_GET)) {
               </button>
               <button type="submit" class="editar__form_button editar__form_button-reset"
                 onclick="window.location='listar_contato.php';">
-                Cancelar </button>
+                Cancelar
+              </button>
             </div>
           </form>
         </div>

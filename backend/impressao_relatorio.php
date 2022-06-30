@@ -28,7 +28,6 @@ if (isset($_GET)) {
   }
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +42,8 @@ if (isset($_GET)) {
       echo $relatorio['modelo'];
       echo "_";
       echo $relatorio['qtdItensPedido'];
+      echo "_";
+      echo $relatorio['nome_fantasia'];
     }
     ?>
   </title>
@@ -217,50 +218,54 @@ if (isset($_GET)) {
             ?>
           </td>
         </tr>
-        <tr>
-          <?php if ($relatorio['observacao'] != NULL) {
-            echo "<th>";
-            echo "Observação:&nbsp;";
-            echo "</th>";
-            echo "<td>";
-            echo $relatorio['observacao'];
-          }
-          ?>
-          </td>
-        </tr>
-        <tr>
-          <?php if ($relatorio['descricaoBotao'] != NULL) {
-            echo "<th>";
-            echo "Descrição do Botão:&nbsp;";
-            echo "</th>";
-            echo "<td>";
-            echo $relatorio['descricaoBotao'];
-          }
-          ?>
-          </td>
-        </tr>
-        <tr>
-          <?php if ($relatorio['descricaoRibite'] != NULL) {
-            echo "<th>";
-            echo "Descrição do Ribite:&nbsp;";
-            echo "</th>";
-            echo "<td>";
-            echo $relatorio['descricaoRibite'];
-          }
-          ?>
-          </td>
-        </tr>
-        <tr>
-          <?php if ($relatorio['placa'] != NULL) {
-            echo "<th>";
-            echo "Descrição da Placa:&nbsp;";
-            echo "</th>";
-            echo "<td>";
-            echo $relatorio['placa'];
-          }
-          ?>
-          </td>
-        </tr>
+        <?php if ($relatorio['observacao'] != NULL) {
+          echo "<tr>";
+          echo "<th>";
+          echo "Observação:&nbsp;";
+          echo "</th>";
+          echo "<td>";
+          echo $relatorio['observacao'];
+          echo "</td>";
+          echo "</tr>";
+        }
+        ?>
+
+        <?php if ($relatorio['descricaoBotao'] != NULL) {
+          echo "<tr>";
+          echo "<th>";
+          echo "Descrição do Botão:&nbsp;";
+          echo "</th>";
+          echo "<td>";
+          echo $relatorio['descricaoBotao'];
+          echo "</td>";
+          echo "</tr>";
+        }
+        ?>
+
+        <?php if ($relatorio['descricaoRibite'] != NULL) {
+          echo "<tr>";
+          echo "<th>";
+          echo "Descrição do Ribite:&nbsp;";
+          echo "</th>";
+          echo "<td>";
+          echo $relatorio['descricaoRibite'];
+          echo "</td>";
+          echo "</tr>";
+        }
+        ?>
+
+        <?php if ($relatorio['placa'] != NULL) {
+          echo "<tr>";
+          echo "<th>";
+          echo "Descrição da Placa:&nbsp;";
+          echo "</th>";
+          echo "<td>";
+          echo $relatorio['placa'];
+          echo "</td>";
+          echo "</tr>";
+        }
+        ?>
+
         <tr>
           <th>
             Quantidade de Botões:&nbsp;
@@ -301,6 +306,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanho'];
+              echo " cm";
             }
             ?>
           </td>
@@ -312,6 +318,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoCintura'];
+              echo " cm";
             }
             ?>
           </td>
@@ -323,6 +330,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoQuadril'];
+              echo " cm";
             }
             ?>
           </td>
@@ -334,6 +342,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoGanchoTraseiro'];
+              echo " cm";
             }
             ?>
           </td>
@@ -345,6 +354,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoComprimentoPernaLateral'];
+              echo " cm";
             }
             ?>
           </td>
@@ -356,6 +366,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoComprimentoFrentePerna'];
+              echo " cm";
             }
             ?>
           </td>
@@ -367,6 +378,7 @@ if (isset($_GET)) {
           <td>
             <?php if ($_GET) {
               echo $relatorio['tamanhoLaguraPerna'];
+              echo " cm";
             }
             ?>
           </td>

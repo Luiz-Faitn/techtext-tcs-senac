@@ -11,7 +11,7 @@ if (!empty($_GET['search'])) {
           FROM pedido p
           LEFT JOIN itens_pedido i on p.idPedido = i.idPedido
           LEFT JOIN cliente c on p.idCliente = c.idCliente
-          WHERE c.nome_fantasia LIKE '%$data%'
+          WHERE c.nome_fantasia LIKE '%$data%' or p.idPedido LIKE '%$data%'
           ORDER BY nome_fantasia DESC";
 } else {
   $sql = 'SELECT p.*, i.iditens_pedido, c.nome_fantasia
@@ -49,7 +49,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECHTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>

@@ -36,7 +36,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECHTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>

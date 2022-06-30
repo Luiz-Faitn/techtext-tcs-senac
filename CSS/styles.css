@@ -49,6 +49,11 @@ main {
   cursor: pointer;
 }
 
+.sidebar .menu .item__logo {
+  position: relative;
+  cursor: pointer;
+}
+
 .sidebar .menu .item a {
   color: white;
   font-size: 16px;
@@ -58,7 +63,24 @@ main {
   line-height: 60px;
 }
 
+.sidebar .menu .item__logo a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 20px;
+  line-height: 60px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10%;
+}
+
 .sidebar .menu .item a:hover {
+  opacity: 0.7;
+  transition: 0.3 ease;
+}
+
+.sidebar .menu .item__logo a:hover {
   opacity: 0.7;
   transition: 0.3 ease;
 }

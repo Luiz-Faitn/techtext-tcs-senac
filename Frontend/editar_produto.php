@@ -39,7 +39,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECHTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -232,20 +232,20 @@ if (isset($_GET)) {
                 onclick="window.location='listar_produto.php';">
                 Cancelar </button>
             </div>
-            </div>
-          </form>
         </div>
-
-        <script type="text/javascript">
-        $(document).ready(function() {
-          //jquery para ativar sub-menus.
-          $('.sub-btn').click(function() {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-          });
-        });
-        </script>
+        </form>
       </div>
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+        //jquery para ativar sub-menus.
+        $('.sub-btn').click(function() {
+          $(this).next('.sub-menu').slideToggle();
+          $(this).find('.dropdown').toggleClass('rotate');
+        });
+      });
+      </script>
+    </div>
     </div>
   </main>
 </body>

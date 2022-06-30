@@ -45,16 +45,18 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECHTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i class="fas fa-angle-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
+                  class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_produto.php" class="sub-item">Novo Produto</a>
                 <a href="listar_produto.php" class="sub-item">Lista de Produtos</a>
               </div>
             </div>
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-people-group"></i>Clientes<i class="fas fa-angle-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-people-group"></i>Clientes<i
+                  class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_cliente.php" class="sub-item">Novo Cliente</a>
                 <a href="listar_cliente.php" class="sub-item">Lista de Clientes</a>
@@ -68,14 +70,16 @@ if (isset($_GET)) {
               </div>
             </div>
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-address-book"></i>Contatos<i class="fas fa-angle-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-address-book"></i>Contatos<i
+                  class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_contato.php" class="sub-item">Novo Contato</a>
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
             <div class="item">
-              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i class="fas fa-angle-right dropdown"></i></a>
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
               <div class="sub-menu">
                 <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
                 <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
@@ -102,7 +106,8 @@ if (isset($_GET)) {
 
             <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data do Cadastro</label>
-              <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>" required />
+              <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>"
+                required />
             </div>
             <br>
 
@@ -129,14 +134,16 @@ if (isset($_GET)) {
 
             <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data de Entrega</label>
-              <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>" required />
+              <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>"
+                required />
             </div>
 
             <div class="cadastro__form_button_container">
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>
-              <button type="submit" class="editar__form_button editar__form_button-reset" onclick="window.location='listar_pedido.php';">
+              <button type="submit" class="editar__form_button editar__form_button-reset"
+                onclick="window.location='listar_pedido.php';">
                 Cancelar
               </button>
             </div>
@@ -144,13 +151,13 @@ if (isset($_GET)) {
         </div>
 
         <script type="text/javascript">
-          $(document).ready(function() {
-            //jquery para ativar sub-menus.
-            $('.sub-btn').click(function() {
-              $(this).next('.sub-menu').slideToggle();
-              $(this).find('.dropdown').toggleClass('rotate');
-            });
+        $(document).ready(function() {
+          //jquery para ativar sub-menus.
+          $('.sub-btn').click(function() {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
           });
+        });
         </script>
       </div>
     </div>

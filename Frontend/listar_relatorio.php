@@ -4,21 +4,20 @@ include "../backend/conexao.php";
 //Definir o horário padrão brasileiro.
 date_default_timezone_set("America/Sao_Paulo");
 
-//Conexão com o banco para listar os pedidos, juntamente com a barra de pesquisar.
+//Conexão com o banco para listar os clientes, juntamente com a barra de pesquisar.
 if (!empty($_GET['search'])) {
   $data = $_GET['search'];
-  $sql = "SELECT p.*, i.iditens_pedido, c.nome_fantasia
-          FROM pedido p
-          LEFT JOIN itens_pedido i on p.idPedido = i.idPedido
-          LEFT JOIN cliente c on p.idCliente = c.idCliente
-          WHERE c.nome_fantasia LIKE '%$data%' or p.idPedido LIKE '%$data%'
-          ORDER BY nome_fantasia DESC";
+  $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
+          FROM itens_pedido i
+          LEFT JOIN pedido p ON p.idPedido = i.idPedido
+          LEFT JOIN produto pr on pr.idProduto = i.idProduto
+          WHERE i.iditens_pedido LIKE '%$data%' or pr.modelo LIKE '%$data%'";
 } else {
-  $sql = 'SELECT p.*, i.iditens_pedido, c.nome_fantasia
-          FROM pedido p
-          LEFT JOIN itens_pedido i on p.idPedido = i.idPedido
-          LEFT JOIN cliente c on p.idCliente = c.idCliente
-          ORDER BY idPedido DESC';
+  $sql = "SELECT i.iditens_pedido, p.data_Cadastro, pr.modelo, i.quantidade
+          FROM itens_pedido i
+          LEFT JOIN pedido p ON p.idPedido = i.idPedido
+          LEFT JOIN produto pr on pr.idProduto = i.idProduto
+          ORDER BY iditens_pedido DESC;";
 }
 
 $resultado = mysqli_query($conexao, $sql);
@@ -35,7 +34,7 @@ if (!$resultado) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lista de Pedidos</title>
+  <title>Relatório</title>
   <link rel="stylesheet" href="../CSS/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -94,7 +93,7 @@ if (!$resultado) {
 
         <body>
           <div class="lista">
-            <h1 class="lista__h1">Lista de Pedidos</h1>
+            <h1 class="lista__h1">Relatório</h1>
             <div class="filtro">
               <div class="lista__buscar lista__buscar-large">
 
@@ -112,45 +111,38 @@ if (!$resultado) {
                 <tr>
                   <th>Código</th>
                   <th>Data de Cadastro</th>
-                  <th>Cliente</th>
-                  <th>Data de Entrega</th>
-                  <th>Editar</th>
+                  <th>Produto</th>
+                  <th>Quantidade</th>
+                  <th>Imprimir</th>
                   <th>Excluir</th>
                 </tr>
               </thead>
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
-                  //PHP para mostrar os pedidos listados.
+                  //PHP para mostrar os clientes listados.
                   echo "<table class='lista__conteudo'>";
-                  echo "<td>$linha[idPedido]</td>";
+                  echo "<td>$linha[iditens_pedido]</td>";
 
                   $data_Cadastro = $linha['data_Cadastro'];
                   $novaData_Cadastro = date("d/m/Y", strtotime($data_Cadastro));
                   echo "<td>$novaData_Cadastro</td>";
 
-                  echo "<td>$linha[nome_fantasia]</td>";
+                  echo "<td>$linha[modelo]</td>";
+                  echo "<td>$linha[quantidade]</td>";
 
-                  $data_Entrega = $linha['dataEntrega'];
-                  $novaData_Entrega = date("d/m/Y", strtotime($data_Entrega));
-                  echo "<td>$novaData_Entrega</td>";
                   echo '<td>';
 
-                  echo "<a href='editar_pedido.php?cod=$linha[idPedido]'>";
-
-                  echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
+                  echo "<a href='javascript:pdf(cod=$linha[iditens_pedido])'>";
+                  echo "<i class='fa-solid fa-print fa-2x'>";
                   echo '</a>';
+
                   echo '<td>';
 
-                  if ($linha['iditens_pedido'] != NULL) {
-                    echo "<i class='fa-solid fa-lock fa-2x'></i>";
-                    echo '</td>';
-                  } else {
-                    echo "<a href='../backend/excluir_Pedido.php?cod=$linha[idPedido]'>";
-                    echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                    echo '</a>';
-                    echo '</td>';
-                  }
+                  echo "<a href='../backend/excluir_Itens_Pedido.php?cod=$linha[iditens_pedido]'>";
+                  echo "<i class='fa-solid fa-trash fa-2x'></i>";
+                  echo '</a>';
 
+                  echo '</td>';
                   echo '</tr>';
                   echo '</table>';
                 } ?>
@@ -181,7 +173,17 @@ if (!$resultado) {
 
         //Funcão para pegar a informação na barra de pesquisa.
         function searchData() {
-          window.location = 'listar_pedido.php?search=' + search.value;
+          window.location = 'listar_relatorio.php?search=' + search.value;
+        }
+
+
+        var cod = document.getElementById('iditens_pedido').value;
+        //Função para imprimir relatório.
+        function pdf() {
+
+          var janela = window.open("../backend/impressao_relatorio.php?cod=" + cod, "_blank ",
+            "width=1100, height=1000");
+          janela.print();
         }
         </script>
       </div>

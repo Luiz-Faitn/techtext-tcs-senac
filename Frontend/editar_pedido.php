@@ -1,5 +1,5 @@
 <?php
-  
+
 //Conexão com o banco para aparecer o idCliente no cadastro. 
 include "../backend/conexao.php";
 
@@ -17,9 +17,9 @@ if (isset($_GET)) {
 
   $pedido = mysqli_fetch_array($resultado);
 
-if (!$resultado) {
+  if (!$resultado) {
     echo "Erro: " . mysqli_error($conexao);
-}
+  }
 }
 
 ?>
@@ -45,7 +45,7 @@ if (!$resultado) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -77,6 +77,14 @@ if (!$resultado) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -88,39 +96,43 @@ if (!$resultado) {
 
             <div class="editar__form_item editar__form_item-large">
               <?php
-                if ($_GET) {
+              if ($_GET) {
                 echo "<label class='editar__form_item_label'>Código</label>";
                 echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
-                }
+              }
               ?>
             </div>
+            <br>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data do Cadastro</label>
               <input type="date" name="data_Cadastro" id="data_Cadastro" value="<?php echo $pedido['data_Cadastro'] ?>"
                 required />
             </div>
+            <br>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="cadastro__form_select">
               <label class="cadastro__form_item_label">Cliente</label>
-              <select name="cliente">
-                <option>Selecione</option>
+              <select name="cliente" class="select" id="select">
+                <option selected disabled>Selecione</option>
                 <?php
-                while($cliente = mysqli_fetch_array($resultadoCliente)){
-                    
-                      if($cliente['idCliente'] == $pedido['idCliente']){
-                         echo "<option value='$cliente[idCliente]' selected='selected'>";
-                      }else{
-                         echo "<option value='$cliente[idCliente]'>";
-                      }
-                      
-                      echo $cliente['nome_fantasia'];
-                      echo "</option>";
-                }
-            ?>
-            </div>
+                while ($cliente = mysqli_fetch_array($resultadoCliente)) {
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+                  if ($cliente['idCliente'] == $pedido['idCliente']) {
+                    echo "<option value='$cliente[idCliente]' selected='selected'>";
+                  } else {
+                    echo "<option value='$cliente[idCliente]'>";
+                  }
+
+                  echo $cliente['nome_fantasia'];
+                  echo "</option>";
+                }
+                ?>
+              </select>
+            </div>
+            <br>
+
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Data de Entrega</label>
               <input type="date" name="dataEntrega" id="dataEntrega" value="<?php echo $pedido['dataEntrega'] ?>"
                 required />
@@ -130,7 +142,8 @@ if (!$resultado) {
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>
-              <button type="reset" class="cadastro__form_button cadastro__form_button-reset">
+              <button type="submit" class="editar__form_button editar__form_button-reset"
+                onclick="window.location='listar_pedido.php';">
                 Cancelar
               </button>
             </div>

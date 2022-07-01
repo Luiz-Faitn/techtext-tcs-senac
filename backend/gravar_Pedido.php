@@ -13,12 +13,12 @@ if ($_POST['cod']) {
 } else {
     $sql = "INSERT INTO pedido(data_Cadastro, idCliente, dataEntrega) 
             VALUES ('$dataCadastro', $cliente, '$dataEntrega')";
-}   
+}
 
 $resultado = mysqli_query($conexao, $sql);
 
 if ($resultado) {
     header('location:../Frontend/listar_pedido.php');
-}else{
+} else {
     echo "Erro: " . mysqli_error($conexao);
 }

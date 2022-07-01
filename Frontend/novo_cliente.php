@@ -19,7 +19,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -51,6 +51,14 @@
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -60,18 +68,18 @@
           <!-- Cadastro de Cliente -->
           <form method="post" action="../backend/gravar_Cliente.php" class="cadastro__form">
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Razão Social</label>
               <input type="text" name="razao_social" placeholder="Razão Social" id="razao_social" required
                 maxlength="150" />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Nome</label>
               <input type="text" name="nome_fantasia" placeholder="Nome" id="nome_fantasia" required maxlength="100" />
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
+            <div class="input-cadastro">
               <label class="cadastro__form_item_label">Marca</label>
               <input type="text" name="marca" placeholder="Marca" id="marca" required maxlength="100" />
             </div>

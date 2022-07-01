@@ -49,6 +49,11 @@ main {
   cursor: pointer;
 }
 
+.sidebar .menu .item__logo {
+  position: relative;
+  cursor: pointer;
+}
+
 .sidebar .menu .item a {
   color: white;
   font-size: 16px;
@@ -58,7 +63,24 @@ main {
   line-height: 60px;
 }
 
+.sidebar .menu .item__logo a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 20px;
+  line-height: 60px;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 10%;
+}
+
 .sidebar .menu .item a:hover {
+  opacity: 0.7;
+  transition: 0.3 ease;
+}
+
+.sidebar .menu .item__logo a:hover {
   opacity: 0.7;
   transition: 0.3 ease;
 }
@@ -92,6 +114,11 @@ main {
   flex-direction: column;
   margin-left: 295px;
   height: 50vh;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .cadastro_produto {
@@ -145,23 +172,68 @@ main {
   flex-direction: column;
   justify-content: space-between;
   height: 60%;
-  width: 30%;
+  width: 100%;
   padding-left: 2%;
+  padding-right: 2%;
 }
 
 .cadastro__form_item {
   display: flex;
 }
 
-.cadastro__form_item_produto {
+.cadastro__form_select {
   display: flex;
+}
+
+.select {
+  flex: .967;
+  padding: 0 .5em;
+  cursor:pointer;
+  font-size: 1em;
+  border: none;
+}
+
+select::-ms-expand {
+  display: none;
+  outline: none;
+}
+
+.select {
+  height: 2.5em;
+  overflow: hidden;
+  border-radius: .40em;
+  outline: none;
+}
+
+.select_lista {
+  cursor:pointer;
+  font-size: 1em;
+  border: none;
+}
+
+.select_lista {
+  width: 88%;
+  height: 2.5em;
+  overflow: hidden;
+  border-radius: .40em;
+  outline: none;
 }
 
 .editar__form_item {
   display: flex;
 }
 
-.cadastro__form_item > input {
+.input-cadastro {
+  display: flex;
+  width: 97%;
+}
+
+.input-cadastro_produto {
+  display: flex;
+  width: 49%;
+}
+
+.input-cadastro > input {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -170,7 +242,25 @@ main {
   border: none;
 }
 
-.cadastro__form_item_produto > input {
+.input-cadastro_produto > input {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.input-cadastro > textarea {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.input-cadastro_produto > select {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -188,12 +278,12 @@ main {
   border: none;
 }
 
-.cadastro__form_item > input:focus {
+.input-cadastro > input:focus {
   border: 2px solid black;
   border-color: #1890ff;
 }
 
-.cadastro__form_item_produto > input:focus {
+.input-cadastro_produto > input:focus {
   border: 2px solid black;
   border-color: #1890ff;
 }
@@ -203,10 +293,11 @@ main {
   border-color: #1890ff;
 }
 
-.cadastro__form_item > input:invalid {
+.input-cadastro > input:invalid {
   border-color: red;
 }
-.cadastro__form_item_produto > input:invalid {
+
+.input-cadastro_produto > input:invalid {
   border-color: red;
 }
 
@@ -214,10 +305,11 @@ main {
   border-color: red;
 }
 
-.cadastro__form_item > input:valid {
+.input-cadastro > input:valid {
   border-color: green;
 }
-.cadastro__form_item_produto > input:valid {
+
+.input-cadastro_produto > input:valid {
   border-color: green;
 }
 
@@ -225,26 +317,28 @@ main {
   border-color: green;
 }
 
-.cadastro__form_item-large {
-  width: 97%;
-}
-
-.cadastro__form_item_produto-large {
-  width: 100%;
-}
-
 .editar__form_item-large {
   width: 97%;
 }
 
 .cadastro__form_item_label {
-  min-width: 125px;
+  min-width: 230px;
   font-size: 18px;
   font-weight: bold;
 }
 
+.cadastro__form_select_label {
+  justify-content: center;
+  align-items: center;
+  min-width: 190px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-top: 6px;
+}
+
 .editar__form_item_label {
-  min-width: 125px;
+  min-width: 230px;
   font-size: 18px;
   font-weight: bold;
 }
@@ -311,7 +405,20 @@ main {
   margin-left: 295px;
 }
 
+.inicial {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+}
+
 .lista__h1 {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: 2% 0px 5%;
+}
+
+.inicial__h1 {
   display: flex;
   align-self: center;
   justify-self: center;

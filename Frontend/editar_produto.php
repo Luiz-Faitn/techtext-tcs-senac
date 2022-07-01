@@ -3,17 +3,17 @@ include "../backend/conexao.php";
 
 //Conexão com o banco para pegar o produto que será editado.
 if (isset($_GET)) {
-    $sql = "SELECT modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa, quantidadeBotao, quantidadeRibite,
+  $sql = "SELECT modelo, tipoTecido, tipoForro, obesrvacao, descricaoBotao, descricaoRibite, placa, quantidadeBotao, quantidadeRibite,
     quantidadePlaca, tamanho, tamanhoCintura, tamanhoQuadril, tamanhoGanchoTraseiro, tamanhoComprimentoPernaLateral, tamanhoComprimentoFrentePerna,
     tamanhoLaguraPerna
     FROM produto WHERE idProduto = $_GET[cod]";
 
-    $resultado = mysqli_query($conexao, $sql);
+  $resultado = mysqli_query($conexao, $sql);
 
-    $produto = mysqli_fetch_array($resultado);
+  $produto = mysqli_fetch_array($resultado);
 
   if (!$resultado) {
-      echo "Erro: " . mysqli_error($conexao);
+    echo "Erro: " . mysqli_error($conexao);
   }
 }
 ?>
@@ -39,7 +39,7 @@ if (isset($_GET)) {
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <div class="item"><a href="../index.php">TECTEXT</a></div>
+            <div class="item__logo"><a href="../index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
                   class="fas fa-angle-right dropdown"></i></a>
@@ -71,6 +71,14 @@ if (isset($_GET)) {
                 <a href="listar_contato.php" class="sub-item">Lista de Contatos</a>
               </div>
             </div>
+            <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="novo_relatorio.php" class="sub-item">Novo relatório</a>
+                <a href="listar_relatorio.php" class="sub-item">Lista de Relatório</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -79,143 +87,165 @@ if (isset($_GET)) {
           <h1 class="cadastro__h1">Edição de Produtos</h1>
           <form method="post" action="../backend/gravar_Produto.php" class="cadastro__form_produto">
 
-            <div class="editar__form_item editar__form_item-large">
-              <?php
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <?php
                 if ($_GET) {
-                echo "<label class='editar__form_item_label'>Código</label>";
-                echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
+                  echo "<label class='editar__form_item_label'>Código</label>";
+                  echo "<input type='text' name='cod' readonly='readonly' value='$_GET[cod]' />";
                 }
-              ?>
+                ?>
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Modelo</label>
+                <input type="text" name="modelo" placeholder="Modelo" id="modelo" required maxlength="200"
+                  value="<?php echo $produto['modelo'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Modelo</label>
-              <input type="text" name="modelo" placeholder="Modelo" id="modelo" required maxlength="200"
-                value="<?php echo $produto['modelo'] ?>" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tipo de Tecido</label>
+                <input type="text" name="tipoTecido" placeholder="Tipo de Tecido" id="tipoTecido" required
+                  maxlength="300" value="<?php echo $produto['tipoTecido'] ?>" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tipo de Forro</label>
+                <input type="text" name="tipoForro" placeholder="Tipo de Forro" id="tipoForro" required maxlength="300"
+                  value="<?php echo $produto['tipoForro'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tipo de Tecido</label>
-              <input type="text" name="tipoTecido" placeholder="Tipo de Tecido" id="tipoTecido" required maxlength="300"
-                value="<?php echo $produto['tipoTecido'] ?>" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Observação</label>
+                <input type="text" name="obesrvacao" placeholder="Obervação..." id="obesrvacao"
+                  value="<?php echo $produto['obesrvacao'] ?>" maxlength="25" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição do Botão</label>
+                <input type="text" name="descricaoBotao" placeholder="Descrição do Botão..." id="descricaoBotao"
+                  value="<?php echo $produto['descricaoBotao'] ?>" maxlength="25" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tipo de Forro</label>
-              <input type="text" name="tipoForro" placeholder="Tipo de Forro" id="tipoForro" required maxlength="300"
-                value="<?php echo $produto['tipoForro'] ?>" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição do Ribite</label>
+                <input type="text" name="descricaoRibite" placeholder="Descrição do Ribite..." id="descricaoRibite"
+                  value="<?php echo $produto['descricaoRibite'] ?>" maxlength="25" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Descrição da Placa</label>
+                <input type="text" name="placa" placeholder="Descrição da Placa..." id="placa"
+                  value="<?php echo $produto['placa'] ?>" maxlength="25" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Observação</label>
-              <textarea class="field" name="obesrvacao" placeholder="Obervação..." id="obesrvacao"></textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade do Botão</label>
+                <input type="number" name="quantidadeBotao" placeholder="Quantidade do Botão" id="quantidadeBotao"
+                  value="<?php echo $produto['quantidadeBotao'] ?>" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade do Ribite</label>
+                <input type="number" name="quantidadeRibite" placeholder="Quantidade do Ribite" id="quantidadeRibite"
+                  value="<?php echo $produto['quantidadeRibite'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Descrição do Botão</label>
-              <textarea class="field" name="descricaoBotao" placeholder="Descrição do Botão..."
-                id="descricaoBotao"> </textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Quantidade da Placa</label>
+                <input type="number" name="quantidadePlaca" placeholder="Quantidade do Placa" id="quantidadePlaca"
+                  value="<?php echo $produto['quantidadePlaca'] ?>" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho</label>
+                <input type="number" name="tamanho" placeholder="Tamanho em cm" id="tamanho"
+                  value="<?php echo $produto['tamanho'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Descrição do Ribite</label>
-              <textarea class="field" name="descricaoRibite" placeholder="Descrição do Ribite..."
-                id="descricaoRibite"></textarea>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho da Cintura</label>
+                <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura em cm" id="tamanhoCintura"
+                  value="<?php echo $produto['tamanhoCintura'] ?>" />
+              </div>
+              <br><br>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho do Quadril</label>
+                <input type="number" name="tamanhoQuadril" placeholder="Tamanho do Quadril" id="tamanhoQuadril"
+                  value="<?php echo $produto['tamanhoQuadril'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Descrição da Placa</label>
-              <input type="text" name="placa" placeholder="Descrição da Placa..." id="placa"
-                value="<?php echo $produto['placa'] ?>" />
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho do Grancho Traseiro</label>
+                <input type="number" name="tamanhoGanchoTraseiro" placeholder="Tamanho do Gancho Traseiro"
+                  id="tamanhoGanchoTraseiro" value="<?php echo $produto['tamanhoGanchoTraseiro'] ?>" />
+              </div>
+
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Comprimento da Perna Lateral</label>
+                <input type="number" name="tamanhoComprimentoPernaLateral" placeholder="Comprimento da Perna Lateral"
+                  id="tamanhoComprimentoPernaLateral"
+                  value="<?php echo $produto['tamanhoComprimentoPernaLateral'] ?>" />
+              </div>
             </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Quantidade do Botão</label>
-              <input type="number" name="quantidadeBotao" placeholder="Quantidade do Botão" id="quantidadeBotao"
-                value="<?php echo $produto['quantidadeBotao'] ?>" />
-            </div>
+            <div class="row">
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Comprimento Frente da Perna</label>
+                <input type="number" name="tamanhoComprimentoFrentePerna" placeholder="Comprimento Frente da Perna"
+                  id="tamanhoComprimentoFrentePerna" value="<?php echo $produto['tamanhoComprimentoFrentePerna'] ?>" />
+              </div>
 
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Quantidade do Ribite</label>
-              <input type="number" name="quantidadeRibite" placeholder="Quantidade do Ribite" id="quantidadeRibite"
-                value="<?php echo $produto['quantidadeRibite'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Quantidade da Placa</label>
-              <input type="number" name="quantidadePlaca" placeholder="Quantidade do Placa" id="quantidadePlaca"
-                value="<?php echo $produto['quantidadePlaca'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tamanho</label>
-              <input type="number" name="tamanho" placeholder="Tamanho" id="tamanho"
-                value="<?php echo $produto['tamanho'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tamanho da Cintura</label>
-              <input type="number" name="tamanhoCintura" placeholder="Tamanho da Cintura" id="tamanhoCintura"
-                value="<?php echo $produto['tamanhoCintura'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tamanho do Quadril</label>
-              <input type="number" name="tamanhoQuadril" placeholder="Tamanho do Quadril" id="tamanhoQuadril"
-                value="<?php echo $produto['tamanhoQuadril'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tamanho do Grancho Traseiro</label>
-              <input type="number" name="tamanhoGanchoTraseiro" placeholder="Tamanho do Gancho Traseiro"
-                id="tamanhoGanchoTraseiro" value="<?php echo $produto['tamanhoGanchoTraseiro'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Comprimento da Perna Lateral</label>
-              <input type="number" name="tamanhoComprimentoPernaLateral" placeholder="Comprimento da Perna Lateral"
-                id="tamanhoComprimentoPernaLateral" value="<?php echo $produto['tamanhoComprimentoPernaLateral'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Comprimento Frente da Perna</label>
-              <input type="number" name="tamanhoComprimentoFrentePerna" placeholder="Comprimento Frente da Perna"
-                id="tamanhoComprimentoFrentePerna" value="<?php echo $produto['tamanhoComprimentoFrentePerna'] ?>" />
-            </div>
-
-            <div class="cadastro__form_item cadastro__form_item-large">
-              <label class="cadastro__form_item_label">Tamanho da Largura da Perna</label>
-              <input type="number" name="tamanhoLaguraPerna" placeholder="Tamanho da Largura da Perna"
-                id="tamanho_largura_pernatamanhoLaguraPerna" value="<?php echo $produto['tamanhoLaguraPerna'] ?>" />
+              <div class="input-cadastro_produto">
+                <label class="cadastro__form_item_label">Tamanho da Largura da Perna</label>
+                <input type="number" name="tamanhoLaguraPerna" placeholder="Tamanho da Largura da Perna"
+                  id="tamanho_largura_pernatamanhoLaguraPerna" value="<?php echo $produto['tamanhoLaguraPerna'] ?>" />
+              </div>
             </div>
 
             <div class=" cadastro__form_button_container">
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>
-              <button type="reset" class="cadastro__form_button cadastro__form_button-reset">
-                Cancelar
-              </button>
+              <button type="submit" class="editar__form_button editar__form_button-reset"
+                onclick="window.location='listar_produto.php';">
+                Cancelar </button>
             </div>
-          </form>
         </div>
-
-        <script type="text/javascript">
-        $(document).ready(function() {
-          //jquery para ativar sub-menus.
-          $('.sub-btn').click(function() {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-          });
-        });
-
-        //Populando os TextArea.
-        document.getElementById(`obesrvacao`).innerHTML = "<?php echo $produto['obesrvacao'] ?>";
-        document.getElementById(`descricaoBotao`).innerHTML = "<?php echo $produto['descricaoBotao'] ?>";
-        document.getElementById(`descricaoRibite`).innerHTML = "<?php echo $produto['descricaoRibite'] ?>";
-        document.getElementById(`descricaoRibite`).innerHTML = "<?php echo $produto['descricaoRibite'] ?>";
-        </script>
+        </form>
       </div>
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+        //jquery para ativar sub-menus.
+        $('.sub-btn').click(function() {
+          $(this).next('.sub-menu').slideToggle();
+          $(this).find('.dropdown').toggleClass('rotate');
+        });
+      });
+      </script>
+    </div>
     </div>
   </main>
 </body>

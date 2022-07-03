@@ -32,6 +32,7 @@
              }
 
               $_SESSION['user'] = $user['idUsuario'];
+              $_SESSION['email'] = $user['email'];
               header("Location: ../index.php");
           }else{
               echo "Falha ao logar! Login ou senha incorretos!";

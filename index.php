@@ -1,3 +1,14 @@
+<?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    if(!isset($_SESSION['user'])){
+       die("Você não pode acessar esta página porque não está logado! 
+           <p><a href='backend/formLoginUsuario.php'>Entrar</p>");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -58,6 +69,9 @@
                 <a href="Frontend/novo_relatorio.php" class="sub-item">Novo relatório</a>
                 <a href="Frontend/listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
+              <p>
+                  <a href="backend/logout.php">Sair</a>
+              </p>
             </div>
           </div>
         </div>

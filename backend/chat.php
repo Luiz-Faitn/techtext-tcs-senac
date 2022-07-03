@@ -1,14 +1,10 @@
 <?php
-include "conexao.php";
-		$nome = $_POST['nome'];
-		$mensagem = $_POST['mensagem'];
+include "conxao.php";
 
-        $sql = "INSERT INTO chat (nome, mensagem) VALUES ('$nome', '$mensagem')";
-
-        $resultado = mysqli_query($sql, $conexao);
-
-      if ($resultado) {   
-          header('../index.php');
-      } else {
-          echo "Erro: " . mysqli_error($conexao);
-      }
+$sql = "SELECT nome, mensagem FROM chat";
+          
+$resultado = mysqli_query($conexao, $sql);
+if (!$resultado) {
+  echo 'ERRO: ' . mysqli_error($conexao);
+}
+?>

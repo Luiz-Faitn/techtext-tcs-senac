@@ -11,11 +11,11 @@ if (!empty($_GET['search'])) {
           WHERE cl.idCliente LIKE '$data%' or cl.razao_social LIKE '%$data%' or cl.nome_fantasia LIKE '%$data%' or cl.marca LIKE '%$data%'
           ORDER BY idCliente DESC";
 } else {
-  $sql = 'SELECT cl.*, co.idContato, p.idPedido
+  $sql = "SELECT cl.*, co.idContato, p.idPedido
           FROM cliente cl 
           LEFT JOIN contato co on cl.idCliente = co.idCliente
           LEFT JOIN pedido p on cl.idCliente = p.idCliente
-          ORDER BY idCliente DESC';
+          ORDER BY idCliente DESC";
 }
 
 $resultado = mysqli_query($conexao, $sql);

@@ -1,3 +1,9 @@
+<?php
+
+include "../techtext-tcs-senac/backend/conexao.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -60,6 +66,39 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="cadastro">
+
+          <head>
+            <title>Chat-Simples</title>
+
+            <script type="text/javascript">
+            function ajax() {
+              var req = new XMLHttpRequest();
+              req.onreadystatechange = function() {
+                if (req.readyState == 4 && req.status == 200) {
+                  document.getElementById('chat').innerHTML = req.responseText;
+                }
+              }
+              req.open('GET', '..backend/chat.php', true);
+              req.send();
+            }
+            setInterval(function() {
+              ajax();
+            }, 1000);
+            </script>
+
+          </head>
+
+          <body onload="ajax();">
+            <div id="chat"></div>
+            <form method="post" action="../techtext-tcs-senac/backend/gravar_Chat.php">
+              <input type="text" name="nome" placeholder="Nome">
+              <input type="text" name="mensagem" placeholder="Mensagem">
+              <input type="submit" value="Enviar">
+            </form>
+          </body>
         </div>
 
         <script type="text/javascript">

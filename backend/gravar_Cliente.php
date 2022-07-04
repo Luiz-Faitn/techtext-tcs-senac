@@ -17,7 +17,7 @@ if ($_POST['cod']) {
 
 $resultado = mysqli_query($conexao, $sql);
 
-if ($resultado) {   
+if ($resultado) {
     header('location:../Frontend/listar_cliente.php');
 } else {
     echo "Erro: " . mysqli_error($conexao);

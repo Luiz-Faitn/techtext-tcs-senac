@@ -14,7 +14,7 @@
         Senha: <input type="password" name="senha" maxlength="15" placeholder="Digite sua senha"><br><br>
 
         <input type="submit" value="Entrar"><br><br>
-        <a href="formCadastroUsuario.php">Cadastre-se</a>
+        <!-- olha o comentário do gravaLoginUsuario -->
     </form>
 </body>
 </html>

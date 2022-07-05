@@ -1,4 +1,6 @@
 <?php
+    // eu acho que esse arquivo poderia estar no formLoginUsuario, mas eu separei pra seguir o padrão.
+    // melhor juntar os 2
     include "conexao.php";
 
     $email = $_POST['email'];
@@ -35,7 +37,7 @@
               $_SESSION['email'] = $user['email'];
               header("Location: ../index.php");
           }else{
-              echo "Falha ao logar! Login ou senha incorretos!";
+              header("Location: formLoginUsuario.php");
           }
        }
     }

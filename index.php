@@ -1,12 +1,7 @@
 <?php
-    if(!isset($_SESSION)){
-        session_start();
-    }
-
-    if(!isset($_SESSION['user'])){
-       die("Você não pode acessar esta página porque não está logado! 
-           <p><a href='backend/formLoginUsuario.php'>Entrar</p>");
-    }
+    include "backend/verifica.php";
+    // verificação pra iniciar a sessão e pra verificar se o usuário está logado. 
+    // Caso não esteja, o acesso é bloqueado. Aplicar a todas as telas.
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +25,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <?php echo $_SESSION['email']; ?> <a href="backend/permissoes.php">Gerenciar permissões</a>
             <div class="item__logo"><a href="index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i

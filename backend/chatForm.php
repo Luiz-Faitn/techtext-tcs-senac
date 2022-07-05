@@ -17,10 +17,10 @@
 	</script>
 </head>
 <body onload="ajax();">
-	<div id="chat">	
+	<div id="chat">
 	</div>
+
 	<form method="post">
-	<input type="number" name="idchat" placeholder="Insere o seu nome: ">
 		<input type="text" name="nome" placeholder="Insere o seu nome: ">
 		<input type="text" name="mensagem" placeholder="mensagem">
 		<input type="submit" value="Enviar">	
@@ -33,7 +33,7 @@
 
         $sql = "INSERT INTO chat (nome, mensagem) VALUES ('$nome', '$mensagem')";
 
-        $resultado = mysqli_query($sql, $conexao);
+        $resultado = mysqli_query($conexao, $sql);
 
       if ($resultado) {   
           header('../chatForm.php');

@@ -1,14 +1,15 @@
 <?php
-include "conxao.php";
+include "conexao.php";
 
 $sql = "SELECT nome, mensagem FROM chat";
-
-foreach($sql->fetchAll() as $Key) {
+$resultado = mysqli_query($conexao, $sql);
+foreach($resultado as $Key) {
+  
   echo "<h3>".$Key['nome']."</h3>";
   echo "<p>".$Key['mensagem']."</p>";
 }
  
-$resultado = mysqli_query($conexao, $sql);
+
 
       if ($resultado) {   
           header('../chatForm.php'.$sql);

@@ -188,7 +188,7 @@ if (isset($_GET)) {
               <button type="submit" name="submit_cliente" class="cadastro__form_button cadastro__form_button-submit">
                 Cadastrar
               </button>
-              <button type="submit" class="editar__form_button editar__form_button-reset"
+              <button type="reset" class="editar__form_button editar__form_button-reset"
                 onclick="window.location='listar_produto.php';">
                 Cancelar </button>
             </div>

@@ -56,7 +56,7 @@
                   <th>Editar</th>
                   <th>Excluir</th>
                 </tr>
-              </thead>
+              </thead> 
               <tbody>
                 <?php while ($linha = mysqli_fetch_array($resultado)) {
                   //PHP para mostrar os clientes listados.
@@ -71,13 +71,13 @@
                   echo "<td>";
                   echo "<a href='editar_usuario.php?cod=$linha[idUsuario]'>";
                   echo "<i class='fa-solid fa-pen-to-square fa-2x'></i>";
-                  echo "</a>";
+                  echo "</a>";                
                   echo "</td>";
-                  
-                  echo "</td>";                  
+
+                  echo "<td>";
                   echo "<a href='../backend/excluirUsuario.php?cod=$linha[idUsuario]'>";
                   echo "<i class='fa-solid fa-trash fa-2x'></i>";
-                  echo "</a>";
+                  echo "</a>"; 
                   echo "</td>";
 
                   echo "</tr>";

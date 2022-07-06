@@ -35,6 +35,7 @@
 
               $_SESSION['user'] = $user['idUsuario'];
               $_SESSION['email'] = $user['email'];
+              $_SESSION['nivel'] = $user['nivel'];
               header("Location: ../index/index.php");
           }else{
               echo "E-mail ou senha inválidos!";

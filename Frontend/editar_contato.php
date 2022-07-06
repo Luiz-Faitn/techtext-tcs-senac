@@ -78,7 +78,7 @@ if (isset($_GET)) {
               <button type="submit" name="submit_cliente" class="editar__form_button editar__form_button-submit">
                 Editar
               </button>
-              <button type="submit" class="editar__form_button editar__form_button-reset"
+              <button type="reset" class="editar__form_button editar__form_button-reset"
                 onclick="window.location='listar_contato.php';">
                 Cancelar
               </button>

@@ -34,10 +34,28 @@
 
             <div class="input-cadastro">
               <label class="cadastro__form_item_label">Senha</label>
-              <input type="password" name="senha" placeholder="Senha" id="senha" required 
+              <input type="password" name="senha1" placeholder="Senha" id="senha1" required 
                 maxlength="15" />
             </div>
             <br>
+
+            <!-- <div class="input-cadastro">
+              <label class="cadastro__form_item_label">Confirme a senha</label>
+              <input type="password" name="senha2" placeholder="Senha" id="senha2" required 
+                maxlength="15" />
+            </div>
+            <br> -->
+
+            <!-- <div>
+                  $senha1 = $_POST['senha1'];
+                  $senha2 = $_POST['senha2'];
+
+                  if($senha1 == $senha2){
+                      echo "As senhas são iguais!";
+                  }else{
+                      echo "As senhas não conferem!";
+                  }
+            </div> -->
 
             <div class="cadastro__form_select">
               <label class="cadastro__form_item_label">Acesso</label>

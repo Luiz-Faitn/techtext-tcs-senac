@@ -64,17 +64,17 @@
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Senha</label>
-              <input type="password" name="senha1" placeholder="Senha" id="senha" required maxlength="15"
+              <input type="password" name="senha1" placeholder="Senha" id="senha1" required maxlength="15"
                 value="<?php echo $usuario['senha'] ?>" />
             </div>
             <br>
 
-            <div class="editar__form_item editar__form_item-large">
+            <!-- <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Confirme a senha</label>
-              <input type="password" name="senha2" placeholder="Senha" id="senha" required maxlength="15"
-                value="<?php echo $usuario['senha'] ?>" />
+              <input type="password" name="senha2" placeholder="Senha" id="senha2" required maxlength="15"
+                value=" php echo usuario senha" />
             </div>
-            <br>
+            <br> -->
             <!-- <div>
                         /*$senha1 = $_POST['senha1'];
                         $senha2 = $_POST['senha2'];
@@ -90,7 +90,7 @@
               <button type="submit" name="submit_cliente" class="editar__form_button editar__form_button-submit">
                 Editar
               </button>
-              <button type="submit" class="editar__form_button editar__form_button-reset"
+              <button type="reset" class="editar__form_button editar__form_button-reset"
                 onclick="window.location='listar_usuario.php';">
                 Cancelar
               </button>

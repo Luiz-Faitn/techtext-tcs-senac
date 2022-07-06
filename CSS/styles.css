@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
   font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
 }
 
@@ -21,6 +22,7 @@ main {
   background-size: cover;
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .background-image_gradient {
@@ -49,12 +51,31 @@ main {
   cursor: pointer;
 }
 
+.sidebar .menu .item_usuario {
+  position: relative;
+  cursor: pointer;
+}
+
 .sidebar .menu .item__logo {
   position: relative;
   cursor: pointer;
 }
 
+.sidebar .menu .item_usuario {
+  position: relative;
+  cursor: pointer;
+}
+
 .sidebar .menu .item a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  padding: 5px 30px;
+  line-height: 60px;
+}
+
+.sidebar .menu .item_usuario a {
   color: white;
   font-size: 16px;
   text-decoration: none;
@@ -89,7 +110,18 @@ main {
   margin-right: 15px;
 }
 
+.sidebar .menu .item_usuario i {
+  margin-right: 15px;
+}
+
 .sidebar .menu .item a .dropdown {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  transition: 0.3s ease;
+}
+
+.sidebar .menu .item_usuario a .dropdown {
   position: absolute;
   right: 0;
   margin: 20px;
@@ -101,7 +133,16 @@ main {
   display: none;
 }
 
+.sidebar .menu .item_usuario .sub-menu {
+  background: rgba(255, 255, 255, 0.1);
+  display: none;
+}
+
 .sidebar .menu .item .sub-menu a {
+  padding-left: 80px;
+}
+
+.sidebar .menu .item_usuario .sub-menu a {
   padding-left: 80px;
 }
 
@@ -114,6 +155,41 @@ main {
   flex-direction: column;
   margin-left: 295px;
   height: 50vh;
+}
+
+.usuario {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 60vh;
+}
+
+.pedido {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 50vh;
+}
+
+.produto {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 100vh;
+}
+
+.cliente {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 48vh;
+}
+
+.usuario_editar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 295px;
+  height: 72vh;
 }
 
 .row {
@@ -139,7 +215,8 @@ main {
   display: flex;
   align-self: center;
   justify-self: center;
-  margin: 2% 0px 5%;
+  margin: 0% 0px 3%;
+  font-size: 32px;
 }
 
 .editar__h1 {
@@ -158,6 +235,7 @@ main {
   padding-left: 2%;
 }
 
+
 .editar__form {
   display: flex;
   flex-direction: column;
@@ -172,6 +250,16 @@ main {
   flex-direction: column;
   justify-content: space-between;
   height: 60%;
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.cadastro__form_usuario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
   width: 100%;
   padding-left: 2%;
   padding-right: 2%;
@@ -228,6 +316,16 @@ select::-ms-expand {
   width: 97%;
 }
 
+.input-cadastro_erro {
+  display: flex;
+  width: 97%;
+}
+
+.input-usuario .image input {
+  display: flex;
+  width: 100%;
+}
+
 .input-cadastro_produto {
   display: flex;
   width: 49%;
@@ -261,6 +359,15 @@ select::-ms-expand {
 }
 
 .input-cadastro_produto > select {
+  width: 100%;
+  height: 35px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.input-cadastro_produto > image {
   width: 100%;
   height: 35px;
   padding-left: 15px;
@@ -327,6 +434,19 @@ select::-ms-expand {
   font-weight: bold;
 }
 
+.cadastro__form_item_erro {
+  width: 97%;
+  height: 10%;
+  text-align: center;
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 10px;
+  border-radius: 5px; 
+  font-size: 18px;
+  display: none;
+}
+
 .cadastro__form_select_label {
   justify-content: center;
   align-items: center;
@@ -358,7 +478,7 @@ select::-ms-expand {
 }
 
 .cadastro__form_button {
-  width: 10%;
+  width: 150px;
   height: 30px;
   justify-self: center;
   border-radius: 10px;
@@ -367,6 +487,21 @@ select::-ms-expand {
   font-weight: bold;
   cursor: pointer;
   margin-top: 2%;
+}
+
+
+.cadastro__form .input-cadastro i{
+  position: absolute;
+  right: 80px;
+  top: 27.5%;
+  color: rgb(62, 62, 62);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.cadastro__form .input-cadastro i.active::before{
+  color: #333;
+  content: "\f070";
 }
 
 .editar__form_button {
@@ -491,4 +626,505 @@ table th {
 
 .lista__conteudo i {
   color: black;
+}
+
+/* CSS Chat/Login */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.chat_registro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #23232e;
+  padding: 0 10px;
+}
+
+.wrapper{
+  background: #fff;
+  max-width: 450px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+}
+
+.wrapper_registro{
+  display: flex;
+  background: #fff;
+  max-width: 450px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+}
+
+.usuario header {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  justify-content: flex-end;
+}
+
+.pedido header {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  justify-content: flex-end;
+}
+
+.cliente header {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  justify-content: flex-end;
+}
+
+.produto header {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  justify-content: flex-end;
+}
+
+.wrapper_usuario img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.wrapper_usuario header .content {
+  display: flex;
+}
+
+.wrapper_usuario header .content img {
+  height: 50px;
+  width: 50px;
+}
+
+.wrapper_usuario header .detalhes {
+  margin-left: 15px;
+}
+
+.wrapper_usuario header .detalhes span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.wrapper_usuario header .logout {
+  color: #fff;
+  font-size: 17px;
+  padding: 7px 15px;
+  background-color: #333;
+  border-radius: 5px;
+  margin-right: 30px;
+  margin-left: 100px;
+}
+
+/* CSS Login */
+
+.form {
+  padding: 25px 30px;
+}
+
+.form .cadastro__form_usuario{
+  padding: 0%;
+}
+
+.form header{
+  font-size: 25px;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.form form{
+  margin: 20px 0;
+}
+
+.form form .error-text{
+  color: #721c24;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.form form .name-details{
+  display: flex;
+}
+
+.form .name-details .field:first-child{
+  margin-right: 10px;
+}
+
+.form .name-details .field:last-child{
+  margin-left: 10px;
+}
+
+.form form .field{
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.former form .input-cadastro {
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.former form .field{
+  display: flex;
+  margin-bottom: 10px;
+  flex-direction: column;
+  position: relative;
+}
+
+.form form .field label{
+  margin-bottom: 2px;
+}
+
+.former form .field label{
+  margin-bottom: 2px;
+}
+
+.form form .input input{
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.former form .input input{
+  height: 40px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.form form .field input{
+  outline: none;
+}
+
+.form form .image input{
+  font-size: 17px;
+}
+
+.form form .button input{
+  width: 150.91px;
+  height: 30px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #00b050;
+}
+
+.former form .button input{
+  width: 150.91px;
+  height: 30px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #00b050;
+  font-size: 18px;
+}
+
+.form form .button_reset input{
+  width: 150.91px;
+  height: 30px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: red;
+  margin-left: 25px;
+}
+
+.former form .button_reset input{
+  width: 150.91px;
+  height: 30px;
+  justify-self: center;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: red;
+  margin-left: 25px;
+  font-size: 18px
+}
+
+.container {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  padding-top: 1%;
+}
+
+.form form .field i{
+  position: absolute;
+  right: 15px;
+  top: 70%;
+  color: #ccc;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.former form .input-cadastro i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  color: #ccc;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.form form .field i.active::before{
+  color: #333;
+  content: "\f070";
+}
+
+.former form .input-cadastro i.active::before{
+  color: #333;
+  content: "\f070";
+}
+
+.form .link{
+  text-align: center;
+  margin: 10px 0;
+  font-size: 17px;
+}
+
+.form .link a{
+  color: #333;
+}
+
+.form .link a:hover{
+  text-decoration: underline;
+}
+
+/* CSS Area Chat */
+
+.area_chat{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../imgs/Background.png) no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0 10px;
+}
+
+.wrapper_chat{
+  background: #fff;
+  width: 75%;
+  height: 75%;
+  border-radius: 16px;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+}
+
+.wrapper_chat img{
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.chat-area header{
+  display: flex;
+  align-items: center;
+  padding: 18px 30px;
+}
+
+.chat-area header img{
+  height: 55px;
+  width: 55px;
+  margin: 0 15px;
+}
+
+.chat-box{
+  position: relative;
+  width: 100%;
+  height: 550px;
+  overflow-y: auto;
+  padding: 10px 30px 20px 30px;
+  background: #8d7e7e;
+  box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
+              inset 0 -32px 32px -32px rgb(0 0 0 / 5%);
+}
+
+.chat-box .text{
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: calc(100% - 50px);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.chat-box .chat{
+  margin: 15px 0;
+}
+
+.chat-box .chat p{
+  word-wrap: break-word;
+  padding: 8px 16px;
+  box-shadow: 0 0 32px rgb(0 0 0 / 8%),
+              0rem 16px 16px -16px rgb(0 0 0 / 10%);
+}
+
+.chat-box .outgoing{
+  display: flex;
+}
+
+.chat-box .outgoing .detalhes{
+  margin-left: auto;
+  max-width: calc(100% - 130px);
+}
+
+.outgoing .detalhes p{
+  background: #333;
+  color: #fff;
+  border-radius: 18px 18px 0 18px;
+}
+
+.chat-box .incoming{
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-box .incoming img{
+  height: 45px;
+  width: 45px;
+}
+
+.chat-box .incoming .detalhes{
+  margin-right: auto;
+  margin-left: 10px;
+  max-width: calc(100% - 130px);
+}
+
+.incoming .detalhes p{
+  background: #fff;
+  color: #333;
+  border-radius: 18px 18px 18px 0;
+}
+
+.typing-area{
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.typing-area input{
+  height: 45px;
+  width: calc(100% - 58px);
+  font-size: 16px;
+  padding: 0 13px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.typing-area button{
+  color: #fff;
+  width: 55px;
+  border: none;
+  outline: none;
+  background: #333;
+  font-size: 19px;
+  cursor: pointer;
+  opacity: 0.7;
+  pointer-events: none;
+  border-radius: 0 5px 5px 0;
+  transition: all 0.3s ease;
+}
+
+.typing-area button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responive media query */
+@media screen and (max-width: 450px) {
+  .form, .users{
+    padding: 20px;
+  }
+  .form header{
+    text-align: center;
+  }
+  .form form .name-details{
+    flex-direction: column;
+  }
+  .form .name-details .field:first-child{
+    margin-right: 0px;
+  }
+  .form .name-details .field:last-child{
+    margin-left: 0px;
+  }
+
+  .users header img{
+    height: 45px;
+    width: 45px;
+  }
+  .users header .logout{
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+  :is(.users, .users-list) .content .details{
+    margin-left: 15px;
+  }
+
+  .users-list a{
+    padding-right: 10px;
+  }
+
+  .chat-area header{
+    padding: 15px 20px;
+  }
+  .chat-box{
+    min-height: 400px;
+    padding: 10px 15px 15px 20px;
+  }
+  .chat-box .chat p{
+    font-size: 15px;
+  }
+  .chat-box .outogoing .details{
+    max-width: 230px;
+  }
+  .chat-box .incoming .details{
+    max-width: 265px;
+  }
+  .incoming .details img{
+    height: 30px;
+    width: 30px;
+  }
+  .chat-area form{
+    padding: 20px;
+  }
+  .chat-area form input{
+    height: 40px;
+    width: calc(100% - 48px);
+  }
+  .chat-area form button{
+    width: 45px;
+  }
 }

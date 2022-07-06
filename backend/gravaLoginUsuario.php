@@ -35,7 +35,7 @@
 
               $_SESSION['user'] = $user['idUsuario'];
               $_SESSION['email'] = $user['email'];
-              header("Location: ../index.php");
+              header("Location: ../index/index.php");
           }else{
               header("Location: formLoginUsuario.php");
           }

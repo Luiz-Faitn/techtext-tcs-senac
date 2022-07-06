@@ -8,5 +8,5 @@
     if(!mysqli_query($conexao, $sql)){
         die("Erro: " . mysqli_error($conexao));
     }else{
-        header("Location: permissoes.php");
+        header("Location: ../Frontend/listar_usuario.php");
     }

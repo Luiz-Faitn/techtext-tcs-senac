@@ -14,7 +14,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <!-- <h3>Usuário:</h3> -->
             <div class="item__logo"><a href="../index/index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i
@@ -54,10 +53,19 @@
                 <a href="../Frontend/novo_relatorio.php" class="sub-item">Novo relatório</a>
                 <a href="../Frontend/listar_relatorio.php" class="sub-item">Lista de Relatório</a>
               </div>
+              <div class="item">
+              <a class="sub-btn"><i class="fa-solid fa-address-book"></i>Usuários<i
+                  class="fas fa-angle-right dropdown"></i></a>
+              <div class="sub-menu">
+                <a href="../Frontend/novo_usuario.php" class="sub-item">Novo Usuário</a>
+                <a href="../Frontend/listar_usuario.php" class="sub-item">Lista de Usuários</a>
+              </div>
+              </div>
               <p>
                   <a href="../backend/logout.php">Sair</a>
               </p>
             </div>
+
           </div>
         </div>
 

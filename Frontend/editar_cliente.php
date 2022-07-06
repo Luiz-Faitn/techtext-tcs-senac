@@ -85,16 +85,6 @@ if (isset($_GET)) {
             </div>
           </form>
         </div>
-
-        <script type="text/javascript">
-        $(document).ready(function() {
-          //jquery para ativar sub-menus.
-          $('.sub-btn').click(function() {
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-          });
-        });
-        </script>
       </div>
     </div>
   </main>

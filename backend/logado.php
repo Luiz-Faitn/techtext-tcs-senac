@@ -12,5 +12,5 @@
       <p><?php echo $row['tipo']; ?></p>
     </div>
   </div>
-  <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
+  <a href="../backend/logout.php?php echo $row['id_unico']; ?>" class="logout">Logout</a>
 </header>

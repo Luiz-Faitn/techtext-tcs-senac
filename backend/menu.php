@@ -70,7 +70,7 @@ $resultadoMenu = mysqli_query($conexao, $sqlMenu);
       <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
           class="fas fa-angle-right dropdown"></i></a>
       <div class="sub-menu">
-        <a href="novo_usuario.php" class="sub-item">Novo Relatórios</a>
+        <a href="novo_relatorio.php" class="sub-item">Novo Relatórios</a>
         <a href="listar_relatorio.php" class="sub-item">Listar de Relatório</a>
       </div>
     </div>

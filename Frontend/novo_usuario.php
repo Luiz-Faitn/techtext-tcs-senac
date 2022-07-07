@@ -2,7 +2,7 @@
 session_start();
 include_once "../backend/conexao.php";
 if (!isset($_SESSION['id_unico'])) {
-  header('location:../index.php');
+  header('location:../Frontend/index.php');
 }
 ?>
 

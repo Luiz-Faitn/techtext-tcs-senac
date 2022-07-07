@@ -1,5 +1,5 @@
 <?php
-while ($row = mysqli_fetch_assoc($sql)) {
+while ($row = mysqli_fetch_assoc($query)) {
   $sql2 = "SELECT *
            FROM mensagens
            WHERE (incoming_msg_id = {$row['id_unico']}

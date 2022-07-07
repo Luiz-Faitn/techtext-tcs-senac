@@ -186,7 +186,7 @@ if (isset($_GET)) {
                     <input type="submit" value="Cadastrar">
                   </div>
                   <div class="field button_reset">
-                    <input type="reset" value="Cancelar">
+                    <a href=""><input type="submit" value="Cancelar"></a>
                   </div>
                 </div>
 

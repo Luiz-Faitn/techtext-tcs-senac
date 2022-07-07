@@ -61,7 +61,6 @@ if (!$resultado) {
                     <tr>
                       <th>Código</th>
                       <th>Código Único</th>
-                      <th>Imagem de Usuário</th>
                       <th>Nome</th>
                       <th>Email</th>
                       <th>Tipo</th>
@@ -76,7 +75,6 @@ if (!$resultado) {
                       echo "<table class='lista__conteudo'>";
                       echo "<td>$linha[id_usuario]</td>";
                       echo "<td>$linha[id_unico]</td>";
-                      echo "<td>$linha[img]</td>";
                       echo "<td>$linha[nome]</td>";
                       echo "<td>$linha[email]</td>";
                       echo "<td>$linha[tipo]</td>";

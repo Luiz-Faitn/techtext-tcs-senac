@@ -988,6 +988,13 @@ table th {
   position: relative;
 }
 
+.former form .input-cadastro_img {
+  margin-top: 15px;
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
+}
+
 .former form .field{
   display: flex;
   margin-bottom: 10px;

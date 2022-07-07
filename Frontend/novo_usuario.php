@@ -52,7 +52,7 @@ if (!isset($_SESSION['id_unico'])) {
                   </select>
                 </div>
 
-                <div class="input-cadastro">
+                <div class="input-cadastro_img">
                   <label class="cadastro__form_item_label">Imagem de Usuário</label>
                   <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg,image/jpg" required />
                 </div>

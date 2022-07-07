@@ -38,6 +38,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
                   <label class="cadastro__form_item_label">Data do Cadastro</label>
                   <input type="date" name="data_Cadastro" id="data_Cadastro" required />
                 </div>
+                </br>
 
                 <div class="cadastro__form_select">
                   <label class="cadastro__form_item_label">Cliente</label>
@@ -58,6 +59,7 @@ $resultadoCliente = mysqli_query($conexao, $sqlCliente);
                     ?>
                   </select>
                 </div>
+                </br>
 
                 <div class="input-cadastro">
                   <label class="cadastro__form_item_label">Data de Entrega</label>

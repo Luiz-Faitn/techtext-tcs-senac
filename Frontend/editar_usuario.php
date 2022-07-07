@@ -125,8 +125,7 @@ if (isset($_GET)) {
 
                     <div class="input-cadastro">
                       <label class="cadastro__form_item_label">Imagem de Usuário</label>
-                      <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg,image/jpg"
-                        required />
+                      <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
                     </div>
 
 
@@ -135,9 +134,10 @@ if (isset($_GET)) {
                         <input type="submit" value="Cadastrar">
                       </div>
                       <div class="field button_reset">
-                        <input type="reset" value="Cancelar">
+                        <a href="../Frontend/listar_usuario.php"><input type="button" value="Cancelar"></a>
                       </div>
                     </div>
+
               </div>
               </form>
           </section>

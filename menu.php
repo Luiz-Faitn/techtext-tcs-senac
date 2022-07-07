@@ -14,34 +14,54 @@
             include "../backend/conexao.php";
             include "../backend/verifica.php";
 
-            $sql = "SELECT idUsuario, email, senha, nivel 
-                    FROM usuario 
-                    WHERE nivel='$_SESSION[nivel]'";
+            if($user['nivel'] == 'Administrador'){
 
-            $resultado = mysqli_query($conexao, $sql);
+              $administrador = $user['nivel'];
 
-            if(!$resultado){
-              die("Erro: " . mysqli_error($conexao));
-            }else{
-              $usuario = mysqli_fetch_array($resultado);
+              $sqlAdm = "SELECT idUsuario, email, senha, nivel 
+                         FROM usuario 
+                         WHERE nivel='$administrador'";
+
+              $resultadoAdm = mysqli_query($conexao, $sqlAdm);
+
+              if(!$resultadoAdm){
+                die("Erro: " . mysqli_error($conexao));
+              }else{
+                $usuarioAdm = mysqli_fetch_array($resultadoAdm);
+                $usuarioLogado = $usuarioAdm;
+              }
+
+            }else if($user['nivel'] == 'Produção'){
+
+              $producao = $user['nivel'];
+
+              $sqlProducao = "SELECT idUsuario, email, senha, nivel 
+                              FROM usuario 
+                              WHERE nivel='$producao'";
+
+              $resultadoProducao = mysqli_query($conexao, $sqlProducao);
+
+              if(!$resultadoProducao){
+                 die("Erro: " . mysqli_error($conexao));
+              }else{
+                 $usuarioProducao = mysqli_fetch_array($resultadoProducao); 
+                 $usuarioLogado = $usuarioProducao;
+              }
             }
 
-            if($_SESSION['nivel'] == 'Administrador'){
-
-            }else if($_SESSION['nivel'] == 'Produção'){
-
-            }
 
         ?>
     </div>
 
     <div class="background-image">
       <div class="background-image_gradient">
-
         <!-- Sidebar -->
         <div class="sidebar">
           <div class="menu">
-            <h3>Usuário:</h3><?php echo $usuario['email'] ?>
+            <h2>Usuário:</h2>
+            <?php 
+                echo $user['nivel'];
+            ?>
             <div class="item__logo"><a href="../index/index.php">TECHTEXT</a></div>
             <div class="item">
               <a class="sub-btn"><i class="fa-solid fa-bag-shopping"></i>Produtos<i

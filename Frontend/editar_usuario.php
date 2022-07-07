@@ -11,7 +11,7 @@
         if(!$resultado){
             echo "Erro: " . mysqli_error($conexao);
         }else{
-            $usuario = mysqli_fetch_array($resultado);
+            $usador = mysqli_fetch_array($resultado);
         }
     }
 
@@ -58,34 +58,16 @@
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">E-mail</label>
               <input type="email" name="email" placeholder="E-mail" id="email" required
-                maxlength="100" value="<?php echo $usuario['email'] ?>" />
+                maxlength="100" value="<?php echo $usador['email'] ?>" />
             </div>
             <br>
 
             <div class="editar__form_item editar__form_item-large">
               <label class="editar__form_item_label">Senha</label>
-              <input type="password" name="senha1" placeholder="Senha" id="senha1" required maxlength="15"
-                value="<?php echo $usuario['senha'] ?>" />
+              <input type="password" name="senha" placeholder="Senha" id="senha" required maxlength="15"
+                value="<?php echo $usador['senha'] ?>" />
             </div>
             <br>
-
-            <!-- <div class="editar__form_item editar__form_item-large">
-              <label class="editar__form_item_label">Confirme a senha</label>
-              <input type="password" name="senha2" placeholder="Senha" id="senha2" required maxlength="15"
-                value=" php echo usuario senha" />
-            </div>
-            <br> -->
-            <!-- <div>
-                        /*$senha1 = $_POST['senha1'];
-                        $senha2 = $_POST['senha2'];
-
-                        if($senha1 == $senha2){
-                            echo "As senhas são iguais!";
-                        }else{
-                            echo "As senhas não conferem!";
-                        } */
-            </div> -->
-
             <div class="editar__form_button_container">
               <button type="submit" name="submit_cliente" class="editar__form_button editar__form_button-submit">
                 Editar

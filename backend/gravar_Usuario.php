@@ -7,7 +7,7 @@ $nome   = mysqli_real_escape_string($conexao, $_POST['nome']);
 $email  = mysqli_real_escape_string($conexao, $_POST['email']);
 $senha  = mysqli_real_escape_string($conexao, $_POST['senha']);
 $tipo   = mysqli_real_escape_string($conexao, $_POST['tipo']);
-$status = "Ativo";
+$status = "Inativo";
 
 
 if ($_POST['cod']) {
@@ -77,17 +77,17 @@ if ($_POST['cod']) {
               $new_img_name = $time . $img_name;
 
               if (move_uploaded_file($tmp_name, "../imgs/icons/" . $new_img_name)) {
-                $status = "Ativo";
+                $status = "Inativo";
                 $ran_id = rand(time(), 100000000);
+                $encrypt_pass = md5($senha);
 
                 $sql2 = mysqli_query($conexao, "INSERT INTO usuarios (id_unico, nome, email, senha, img, tipo, status) 
-                                  VALUES ({$ran_id}, '{$nome}', '{$email}', '{$senha}', '{$new_img_name}', '{$tipo}', '{$status}')");
+                                  VALUES ({$ran_id}, '{$nome}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$tipo}', '{$status}')");
                 if ($sql2) {
                   $sql3 = mysqli_query($conexao, "SELECT * FROM usuarios WHERE email = '{$email}'");
 
                   if (mysqli_num_rows($sql3) > 0) {
                     $row = mysqli_fetch_assoc($sql3);
-                    $_SESSION['id_unico'] = $row['id_unico'];
                     echo "Sucesso!";
                   }
                 } else {

@@ -29,17 +29,25 @@ if (!isset($_SESSION['id_unico'])) {
 
                 <div class="input-cadastro">
                   <label class="cadastro__form_item_label">Nome de Usuário</label>
-                  <input type="text" name="nome" placeholder="Nome de Usuário" id="nome" required maxlength="255" />
+                  <input type="text" name="nome" placeholder="Nome de Usuário..." id="nome" required maxlength="255" />
                 </div>
 
                 <div class="input-cadastro">
                   <label class="cadastro__form_item_label">Email do Usuário</label>
-                  <input type="text" name="email" placeholder="Email do Usuário" id="email" required maxlength="255" />
+                  <input type="text" name="email" placeholder="Email do Usuário..." id="email" required
+                    maxlength="255" />
                 </div>
 
                 <div class="input-cadastro">
                   <label class="cadastro__form_item_label">Senha</label>
-                  <input type="password" name="senha" placeholder="Senha" id="senha" required maxlength="255" />
+                  <input type="password" name="senha" placeholder="Senha..." id="senha" required maxlength="255" />
+                  <i class="fas fa-eye"></i>
+                </div>
+
+                <div class="input-cadastro">
+                  <label class="cadastro__form_item_label">Confirmar Senha</label>
+                  <input type="password" name="senha_confirmar" placeholder="Confirmar Senha..." id="senha" required
+                    maxlength="255" />
                   <i class="fas fa-eye"></i>
                 </div>
 

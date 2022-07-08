@@ -13,7 +13,7 @@ continueBtn.onclick = () => {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         let data = xhr.response;
-        if (data === 'Sucesso!' && stristr($data, 'cod') === TRUE) {
+        if (data === 'Sucesso!') {
           location.href = '../Frontend/listar_usuario.php';
         } else {
           errorText.style.display = 'block';

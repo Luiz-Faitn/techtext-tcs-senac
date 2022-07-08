@@ -38,7 +38,7 @@ if (isset($_GET)) {
           <section class="former signup">
             <div class="usuario">
               <?php include_once "../backend/logado.php"; ?>
-              <h1 class="cadastro__h1">Cadastro de Usuários</h1>
+              <h1 class="cadastro__h1">Editar Usuário</h1>
 
               <div class="wrapper_usuario_editar">
                 <section class="former signup">
@@ -82,14 +82,21 @@ if (isset($_GET)) {
 
                     <div class="input-cadastro">
                       <label class="cadastro__form_item_label">Senha</label>
-                      <input type="password" name="senha" placeholder="Senha" id="senha" required maxlength="255" />
+                      <input type="password" name="senha" placeholder="Senha..." id="senha" required maxlength="255" />
                       <i class="fas fa-eye"></i>
                     </div>
                     </br>
 
+                    <div class="input-cadastro">
+                      <label class="cadastro__form_item_label">Confirmar Senha</label>
+                      <input type="password" name="senha_confirmar" placeholder="Confirmar Senha..."
+                        id="senha_confirmar" required maxlength="255" />
+                      <i class="fas fa-eye"></i>
+                    </div>
+
                     <div class="cadastro__form_select">
-                      <label class="cadastro__form_item_label">Tipo de Usuário</label>
-                      <select name="tipo" class="select" id="select" required>
+                      <label class="cadastro__form_item_label" hidden>Tipo de Usuário</label>
+                      <select name="tipo" class="select" id="select" required hidden>
                         <?php
                         if ($usuario['tipo' == "Administrador"]) {
                           echo "<option name='tipo' id='tipo' disabled>Selecione</option>";
@@ -103,11 +110,10 @@ if (isset($_GET)) {
                         ?>
                       </select>
                     </div>
-                    </br>
 
                     <div class="cadastro__form_select">
-                      <label class="cadastro__form_item_label">Status</label>
-                      <select name="status" class="select" id="select" required>
+                      <label class="cadastro__form_item_label" hidden>Status</label>
+                      <select name="status" class="select" id="select" required hidden>
                         <?php
                         if ($usuario['status' == "Ativo"]) {
                           echo "<option name='tipo' id='tipo' value='Ativo' disabled>Selecione</option>";
@@ -121,13 +127,12 @@ if (isset($_GET)) {
                         ?>
                       </select>
                     </div>
-                    </br>
 
                     <div class="input-cadastro">
-                      <label class="cadastro__form_item_label">Imagem de Usuário</label>
-                      <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg,image/jpg" />
+                      <label class="cadastro__form_item_label" hidden>Imagem de Usuário</label>
+                      <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg,image/jpg"
+                        hidden />
                     </div>
-
 
                     <div class="container">
                       <div class="field button">

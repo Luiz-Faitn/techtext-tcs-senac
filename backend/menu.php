@@ -66,7 +66,7 @@ $resultadoMenu = mysqli_query($conexao, $sqlMenu);
     }
     ?>
 
-    <div class="item_usuario">
+    <div class="item">
       <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
           class="fas fa-angle-right dropdown"></i></a>
       <div class="sub-menu">

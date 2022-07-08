@@ -44,7 +44,7 @@ $resultadoProduto = mysqli_query($conexao, $sqlProduto);
               <h1 class="cadastro__h1">Cadastro de Relatórios</h1>
 
               <!-- Cadastro de Relatórios -->
-              <form method="post" action="../backend/gravar_Itens_Pedido.php" class="cadastro__form">
+              <form method="post" action="../backend/gravar_Itens_Pedido.php" class="relatorio__form">
 
                 <div class="cadastro__form_select">
                   <label class="cadastro__form_item_label">Pedido</label>

@@ -17,7 +17,10 @@ $resultadoMenu = mysqli_query($conexao, $sqlMenu);
         $tipo = $row['tipo'];
 
         echo "<div class='item'>";
-        echo "<a href='usuarios.php' class='sub-item'><i class='fa-brands fa-rocketchat'></i>Lista de Usuários</a>";
+        echo "<a class='sub-btn'><i class='fa-brands fa-rocketchat'></i>Chat<i class='fas fa-angle-right dropdown'></i></a>";
+        echo "<div class='sub-menu'>";
+        echo "<a href='usuarios.php' class='sub-item'>Lista de Usuários</a>";
+        echo "</div>";
         echo "</div>";
 
         if ($tipo == 'Administrador') {
@@ -70,7 +73,10 @@ $resultadoMenu = mysqli_query($conexao, $sqlMenu);
       <a class="sub-btn"><i class="fa-solid fa-file-contract"></i>Relatórios<i
           class="fas fa-angle-right dropdown"></i></a>
       <div class="sub-menu">
-        <a href="novo_relatorio.php" class="sub-item">Novo Relatórios</a>
+        <?php
+        if ($tipo == 'Administrador') {
+          echo "<a href='novo_relatorio.php' class='sub-item'>Novo Relatório</a>";
+        } ?>
         <a href="listar_relatorio.php" class="sub-item">Listar de Relatório</a>
       </div>
     </div>

@@ -1,8 +1,5 @@
---
--- Table structure for table `cliente`
---
-
-DROP TABLE IF EXISTS `cliente`;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8;
+USE `mydb`;
 
 CREATE TABLE `cliente` (
   `idCliente` int NOT NULL AUTO_INCREMENT,
@@ -11,7 +8,7 @@ CREATE TABLE `cliente` (
   `marca` varchar(100) NOT NULL,
   PRIMARY KEY (`idCliente`),
   UNIQUE KEY `idcliente_UNIQUE` (`idCliente`)
-) ENGINE = InnoDB AUTO_INCREMENT = 107 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `contato`
@@ -28,7 +25,7 @@ CREATE TABLE `contato` (
   UNIQUE KEY `idContato_UNIQUE` (`idContato`),
   KEY `fk_Contato_cliente_idx` (`idCliente`),
   CONSTRAINT `fk_Contato_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`)
-) ENGINE = InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `itens_pedido`
@@ -47,7 +44,7 @@ CREATE TABLE `itens_pedido` (
   KEY `fk_itens_pedido_Produto1_idx` (`idProduto`),
   CONSTRAINT `fk_itens_pedido_Pedido1` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idPedido`),
   CONSTRAINT `fk_itens_pedido_Produto1` FOREIGN KEY (`idProduto`) REFERENCES `produto` (`idProduto`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `pedido`
@@ -64,7 +61,7 @@ CREATE TABLE `pedido` (
   UNIQUE KEY `idPedido_UNIQUE` (`idPedido`),
   KEY `fk_Pedido_Cliente1_idx` (`idCliente`),
   CONSTRAINT `fk_Pedido_Cliente1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`)
-) ENGINE = InnoDB AUTO_INCREMENT = 8 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `produto`
@@ -93,7 +90,7 @@ CREATE TABLE `produto` (
   `quantidadePlaca` int DEFAULT NULL,
   PRIMARY KEY (`idProduto`),
   UNIQUE KEY `idProduto_UNIQUE` (`idProduto`)
-) ENGINE = InnoDB AUTO_INCREMENT = 7 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `usuarios`
@@ -111,7 +108,7 @@ CREATE TABLE `usuarios` (
   `tipo` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id_usuario`)
-) ENGINE = InnoDB AUTO_INCREMENT = 24 DEFAULT CHARSET = utf8mb3;
+);
 
 --
 -- Table structure for table `usuarios`
@@ -125,6 +122,6 @@ CREATE TABLE `mensagens` (
   `outgoing_msg_id` int(255) NOT NULL,
   `msg` varchar(1000) NOT NULL,
   PRIMARY KEY (`id_msg`)
-) ENGINE = InnoDB AUTO_INCREMENT = 24 DEFAULT CHARSET = utf8mb3;
+);
 
 INSERT INTO `usuarios` VALUES (26,768021978,'admin','admin@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','1657193785admin.png','Administrador','Ativo');
